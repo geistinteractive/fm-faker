@@ -1,0 +1,58 @@
+{
+  "properties": {
+    "Global": {
+      "type": "array",
+      "minItems": 100,
+      "maxItems": 140,
+      "items": {
+        "type": "object",
+        "properties": {
+          "$ref": "#/definitions/Global"
+        }
+      }
+    }
+  },
+  "defintions": {
+    "Global": {
+      "ID": {
+        "type": "string"
+      },
+      "g_Start_Time": {
+        "type": "string"
+      },
+      "g_End_Time": {
+        "type": "string"
+      },
+      "g_Filter_Time_Entry": {
+        "type": "string"
+      },
+      "g_Task_Status": {
+        "type": "string"
+      },
+      "g_Flag_Add_Task": {
+        "type": "string"
+      },
+      "g_Filter_Date_End": {
+        "type": "string"
+      },
+      "g_Filter_Date_Start": {
+        "type": "string"
+      },
+      "g_Filter_Job": {
+        "type": "string"
+      },
+      "g_Filter_Status": {
+        "type": "string"
+      },
+      "g_Logo": {
+        "type": "string"
+      },
+      "g_Title": {
+        "type": "string"
+      },
+      "g_Sample_Field": {
+        "type": "string"
+      }
+    }
+  }
+}

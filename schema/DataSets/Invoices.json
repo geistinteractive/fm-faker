@@ -1,0 +1,71 @@
+{
+  "type": "object",
+  "dataSet": {
+    "name": "Invoices",
+    "link": "Invoices",
+    "description": "100 to 140 Invoices with related customer IDs"
+  },
+  "properties": {
+    "InventoryItem": {
+      "type": "array",
+      "minItems": 100,
+      "maxItems": 140,
+      "items": {
+        "type": "object",
+        "properties": { "$ref": "InventoryItems.json" },
+        "required": ["Id", "Description", "Price", "Image"]
+      }
+    },
+    "Invoice": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "properties": {
+          "Id": { "type": "string", "unique": true, "chance": "guid" },
+          "Dates": {
+            "type": "string",
+            "chance": { "date": { "year": 2019, "string": true } }
+          },
+          "CustomerId": {
+            "jsonPath": { "path": "$..Customer.[*].Id", "count": 10 }
+          }
+        },
+        "required": ["Id", "Date", "CustomerId"]
+      }
+    },
+    "InvoiceItem": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "properties": { "$ref": "InvoiceItem.json" },
+        "required": ["Id", "Qty", "InvoiceId", "InventoryItemId"]
+      }
+    },
+    "Customer": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "properties": { "$ref": "Customer.json" },
+        "required": [
+          "Id",
+          "Name",
+          "BillingCity",
+          "BillingState",
+          "BillingStreet",
+          "BillingPostalCode",
+          "ShippingCity",
+          "ShippingState",
+          "ShippingStreet",
+          "ShippingPostalCode"
+        ]
+      }
+    }
+  },
+  "required": ["Invoice", "Customer", "InvoiceItem", "InventoryItem"]
+}

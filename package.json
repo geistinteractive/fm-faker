@@ -1,0 +1,37 @@
+{
+  "name": "fm-faker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geistinteractive/fm-faker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geistinteractive/fm-faker/issues"
+  },
+  "homepage": "https://github.com/geistinteractive/fm-faker#readme",
+  "dependencies": {
+    "chance": "^1.1.0",
+    "esm": "^3.2.25",
+    "faker": "^4.1.0",
+    "file-saver": "^2.0.2",
+    "isomorphic-fetch": "^2.2.1",
+    "json-schema-faker": "^0.5.0-rc23",
+    "json2csv": "^4.5.3",
+    "jsonpath": "^1.0.2",
+    "next": "^9.0.7",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
+    "react-dropzone": "^10.1.10",
+    "react-use": "^12.2.2",
+    "reactstrap": "^8.0.1"
+  }
+}

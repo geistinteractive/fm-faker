@@ -1,0 +1,18 @@
+{
+  "Id": {
+    "type": "string",
+    "unique": true,
+    "chance": "guid"
+  },
+  "Qty": {
+    "type": "integer",
+    "minimum": 1,
+    "maximum": 12
+  },
+  "InvoiceId": {
+    "jsonPath": { "path": "$..Invoice.[*].Id", "count": 10 }
+  },
+  "InventoryItemId": {
+    "jsonPath": { "path": "$..InventoryItem.[*].Id", "count": 10 }
+  }
+}
