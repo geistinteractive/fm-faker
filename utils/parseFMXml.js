@@ -1,5 +1,23 @@
 import jsf from "json-schema-faker";
 import chance from "chance";
+
+function getType(datatype) {
+  switch (datatype) {
+    case "Text":
+      return "string";
+    case "Number":
+      return "integer";
+    case "Date":
+      return "string";
+    case "Time":
+      return "string";
+    case "Timestamp":
+      return "string";
+    default:
+      return "unknown";
+  }
+}
+
 /**
  * parse Base Tables and Fields
  * @param {Document} xmlDoc
@@ -13,7 +31,18 @@ function parseTablesFromXml(xmlDoc) {
     let fields = [];
     for (var n = 0; n < FieldsForTable.length; n++) {
       const fieldNode = FieldsForTable[n];
-      fields[n] = attr(fieldNode);
+
+      const StorageNode = fieldNode.getElementsByTagName("Storage")[0];
+      const IsGlobal = StorageNode
+        ? StorageNode.getAttribute("global") === "True"
+        : false;
+      if (!IsGlobal) {
+        const obj = attr(fieldNode);
+        if (obj.fieldtype === "Normal") {
+          obj.type = getType(obj.datatype);
+          fields.push(obj);
+        }
+      }
     }
 
     const UUIDNode = TablesNodes[i].getElementsByTagName("UUID")[0];
@@ -91,7 +120,6 @@ export function makeSchemas(data) {
       }
     };
   });
-  console.log("ok");
 
   return generateData({ properties, definitions, required: requiredData });
 }
