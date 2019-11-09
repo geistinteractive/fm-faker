@@ -1,5 +1,4 @@
-import jsf from "json-schema-faker";
-import chance from "chance";
+import generateData from "./generateData";
 
 function getType(datatype) {
   switch (datatype) {
@@ -124,13 +123,4 @@ export function makeSchemas(data) {
   });
 
   return generateData({ properties, definitions, required: requiredData });
-}
-
-export function generateData(schema) {
-  jsf.extend("chance", chance);
-  jsf.extend("faker", () => require("faker"));
-  jsf.option({ resolveJsonPath: true });
-  return jsf.resolve(schema).then(r => {
-    console.log(JSON.stringify(r, null, "  "));
-  });
 }
