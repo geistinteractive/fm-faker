@@ -13,6 +13,8 @@ function getType(datatype) {
       return "string";
     case "Timestamp":
       return "string";
+    case "Binary":
+      return "string";
     default:
       return "unknown";
   }

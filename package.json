@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "storybook": "start-storybook -s ./static -p 6006 ",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,8 @@
   },
   "homepage": "https://github.com/geistinteractive/fm-faker#readme",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "bootstrap": "^4.3.1",
     "chance": "^1.1.0",
     "esm": "^3.2.25",
     "faker": "^4.1.0",
@@ -27,11 +31,20 @@
     "json-schema-faker": "^0.5.0-rc23",
     "json2csv": "^4.5.3",
     "jsonpath": "^1.0.2",
-    "next": "^9.0.7",
+    "next": "^9.1.2",
     "react": "^16.10.1",
+    "react-ace": "^8.0.0",
     "react-dom": "^16.10.1",
     "react-dropzone": "^10.1.10",
     "react-use": "^12.13.0",
     "reactstrap": "^8.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-links": "^5.2.5",
+    "@storybook/addons": "^5.2.5",
+    "@storybook/react": "^5.2.5",
+    "babel-loader": "^8.0.6"
   }
 }
