@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import MyNavBar from "../components/MyNavBar";
+import { VSpace } from "../components/Utilities";
+import { Container } from "reactstrap";
 
-import FMTableData from "../contexts/FMTableData";
 import App from "next/app";
 
 class MyApp extends App {
@@ -18,21 +20,18 @@ class MyApp extends App {
 
   constructor() {
     super();
-    this.state = { fmTables: [] };
   }
-
-  setFMTables = data => {
-    this.setState({ fmTables: data });
-  };
 
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <FMTableData.Provider
-        value={{ fmTables: this.state.fmTables, setFMTables: this.setFMTables }}
-      >
-        <Component {...pageProps} />
-      </FMTableData.Provider>
+      <>
+        <MyNavBar></MyNavBar>
+        <VSpace height="10px" />
+        <Container fluid>
+          <Component {...pageProps} />
+        </Container>
+      </>
     );
   }
 }

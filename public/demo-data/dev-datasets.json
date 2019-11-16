@@ -1,0 +1,5 @@
+[
+  { "name": "JobTracker", "fileName": "JobTracker.xml" },
+  { "name": "Donations", "fileName": "Donations.xml" },
+  { "name": "Marketing", "fileName": "Marketing.xml" }
+]

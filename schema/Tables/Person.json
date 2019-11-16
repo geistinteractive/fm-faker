@@ -1,8 +1,0 @@
-{
-  "Id": { "type": "string", "chance": "guid", "unique": true },
-  "FirstName": { "type": "string", "faker": "name.firstName" },
-  "LastName": { "type": "string", "faker": "name.lastName" },
-  "Phone": { "type": "string", "faker": "phone.phoneNumber" },
-  "Email": { "type": "string", "faker": "internet.email" },
-  "Avatar": { "type": "string", "faker": "internet.avatar" }
-}

@@ -17,10 +17,8 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           ></link>
         </Head>
-        <body
-          style={{ margin: "0px", padding: "0px" }}
-          className="container-fluid"
-        >
+
+        <body style={{ margin: "0px", padding: "0px" }}>
           <Main />
           <NextScript />
         </body>

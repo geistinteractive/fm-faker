@@ -69,6 +69,8 @@ function attr(node) {
  * @param {file} acceptedFiles
  */
 export function parseTables(acceptedFiles) {
+  const name = acceptedFiles[0].name;
+
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onabort = () => {
@@ -82,8 +84,9 @@ export function parseTables(acceptedFiles) {
       const xml = reader.result;
       let parser = new DOMParser();
       let xmlDoc = parser.parseFromString(xml, "application/xml");
-      const Tables = parseTablesFromXml(xmlDoc);
-      resolve(Tables);
+      const tables = parseTablesFromXml(xmlDoc);
+
+      resolve({ name, tables });
     };
     //read the file
     reader.readAsText(acceptedFiles[0]);

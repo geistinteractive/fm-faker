@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
-import EditTypeField from "../EditTypeField";
+import dynamic from "next/dynamic";
+//import EditTypeField from "../EditTypeField";
 import generateData from "../../utils/generateData";
+
+const EditTypeField = dynamic(
+  () => {
+    import("../EditTypeField");
+  },
+  { ssr: false }
+);
 
 export default function FieldRow({ data, onValidChange }) {
   if (!data) return null;
   const [generated, setGenerated] = useState();
 
-  const { id, name, type } = data;
+  const { id, name, exampleData } = data;
 
   useEffect(() => {
     async function generate() {
-      const data = await generateData(type);
+      const data = await generateData(exampleData);
       setGenerated(data);
     }
     generate();
@@ -22,10 +30,10 @@ export default function FieldRow({ data, onValidChange }) {
       <td>{name}</td>
       <td>
         <EditTypeField
-          onValidChange={type => {
-            onValidChange({ type });
+          onValidChange={exampleData => {
+            onValidChange({ ...data, exampleData });
           }}
-          value={type}
+          value={exampleData}
         ></EditTypeField>
       </td>
       <td>{generated}</td>

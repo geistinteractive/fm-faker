@@ -1,6 +1,5 @@
 import { useCallback, useMemo, useContext } from "react";
 import { useDropzone } from "react-dropzone";
-import { useFMTableData } from "../contexts/FMTableData";
 
 import { parseTables, makeSchemas } from "../utils/parseFMXml";
 
@@ -32,11 +31,11 @@ const rejectStyle = {
   borderColor: "#00e676" // the isDragReject is just plain wrong so making accept the same as reject for now
 };
 
-export function XMLDropZone() {
-  const { setFMTables } = useFMTableData();
+export default function XMLDropZone({ onReceiveParsedFile }) {
+  const { setFMTables } = { setFMTables: () => {} };
   const onDrop = useCallback(async acceptedFiles => {
-    const Tables = await parseTables(acceptedFiles);
-    setFMTables(Tables);
+    const ParsedFile = await parseTables(acceptedFiles);
+    onReceiveParsedFile(ParsedFile);
 
     //console.log(JSON.stringify(makeSchemas(Tables), null, "  "));
   }, []);

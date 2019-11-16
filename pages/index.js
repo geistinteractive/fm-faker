@@ -1,55 +1,20 @@
-import { Container, Col, Row, Card, CardBody, CardHeader } from "reactstrap";
-import { useState } from "react";
-import dynamic from "next/dynamic";
+import React from "react";
+import LoggedInHome from "../components/LoggedInHome";
+import useMe from "../client-api/useMe";
 
-import { XMLDropZone } from "../components/XMLDropZone";
-import MyNavBar from "../components/myNavBar";
-import TableList from "../components/TableList";
-import { FieldList } from "../components/FieldList";
-//import FieldTypeEditor from "../components/FieldTypeEditor";
-const FieldTypeEditor = dynamic(() => import("../components/TypeEditor"), {
-  ssr: false
-});
+export default function Home() {
+  const { data, error } = useMe();
 
-function TableManager() {
-  const [selectedTable, setSelected] = useState();
+  const loggedIn = data && data.error !== "not_authenticated";
 
-  return (
-    <>
-      <Row>
-        <Col>
-          <XMLDropZone></XMLDropZone>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs="2">
-          <TableList
-            table={selectedTable}
-            onClick={clicked => {
-              setSelected(clicked);
-            }}
-          ></TableList>
-        </Col>
-        <Col xs={4}>
-          <FieldList table={selectedTable}></FieldList>
-        </Col>
-        <Col xs={6}>
-          <FieldTypeEditor></FieldTypeEditor>
-        </Col>
-      </Row>
-    </>
-  );
+  if (error) {
+    return <div>{error.toString()}</div>;
+  }
+
+  if (loggedIn) return <LoggedInHome />;
+  return <LoggedOutHome />;
 }
 
-function Home() {
-  return (
-    <>
-      <MyNavBar />
-      <Container fluid>
-        <TableManager></TableManager>
-      </Container>
-    </>
-  );
+function LoggedOutHome() {
+  return <p>logged out</p>;
 }
-
-export default Home;
