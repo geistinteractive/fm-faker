@@ -6,7 +6,6 @@ const {
   AUTH0_CLIENT_SECRET,
   AUTH0_COOKIE_SECRET
 } = process.env;
-console.log(process.env);
 
 const auth0 = initAuth0({
   domain: AUTH0_DOMAIN,
