@@ -1,14 +1,14 @@
-import auth0 from "../../../services/auth0";
+import { checkUser } from "../../../api-services/auth0";
+import methods from "../../../utils/middleware/methods";
+import { getDataSetById } from "../../../api-services/db/dataset";
 
-export default async (req, res) => {
-  const { user } = await auth0.getSession(req);
-
-  res.setHeader("Content-Type", "application/json");
-  res.statusCode = 200;
-  const { method } = req;
-  if (method === "GET") {
-    res.end(JSON.stringify({ method: method, id: id }));
-  } else if (method === "PUT") {
-    res.end(JSON.stringify({ method: method, id: id }));
-  }
-};
+export default checkUser(
+  methods({
+    GET: async (req, res) => {
+      const id = req.query.id;
+      const results = await getDataSetById(id);
+      res.statusCode = 200;
+      return res.json(results);
+    }
+  })
+);

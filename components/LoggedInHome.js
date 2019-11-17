@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useDataSets } from "../client-api/dataset";
 import { Table, Row, Col, Button } from "reactstrap";
 import AddNewDataSet from "./AddNewDatasetModal";
+import Link from "next/link";
 
 export default function LoggedInHome() {
   const { data, error } = useDataSets();
   const [modal, setModal] = useState(false);
 
   if (!data) return null;
+  const datasetArray = data.data;
 
   return (
     <>
@@ -50,13 +52,16 @@ export default function LoggedInHome() {
             </thead>
 
             <tbody>
-              {data.map(dataset => {
-                const { name, fileName } = dataset;
+              {datasetArray.map(dataset => {
+                const { data } = dataset;
+                data.id = dataset["ref"]["@ref"].id;
+                const { name, fileName, tables } = data;
+
                 return (
                   <tr key={name}>
                     <td>{name}</td>
                     <td>{fileName}</td>
-                    <td>3</td>
+                    <td>{tables.length}</td>
                     <td>
                       <Button color="link" size="sm">
                         Schema
@@ -64,9 +69,11 @@ export default function LoggedInHome() {
                       <Button color="link" size="sm">
                         Data
                       </Button>
-                      <Button color="link" size="sm">
-                        Edit
-                      </Button>
+                      <Link href={`/dataset/[id]`} as={`/dataset/${data.id}`}>
+                        <Button color="link" size="sm">
+                          Edit
+                        </Button>
+                      </Link>
                     </td>
                   </tr>
                 );

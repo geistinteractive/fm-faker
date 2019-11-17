@@ -86,7 +86,7 @@ export function parseTables(acceptedFiles) {
       let xmlDoc = parser.parseFromString(xml, "application/xml");
       const tables = parseTablesFromXml(xmlDoc);
 
-      resolve({ name, tables });
+      resolve({ name: `from ${name}`, tables, fileName: name });
     };
     //read the file
     reader.readAsText(acceptedFiles[0]);

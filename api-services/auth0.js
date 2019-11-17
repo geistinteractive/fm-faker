@@ -37,6 +37,7 @@ const auth0 = initAuth0({
 export default auth0;
 
 export const checkUser = fn => {
+ 
   return async (req, res) => {
     try {
       const { user } = await auth0.getSession(req);

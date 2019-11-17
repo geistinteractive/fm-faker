@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
-import FMTableData from "../contexts/FMTableData";
+import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-const TableList = ({ onClick, table }) => {
-  const { fmTables } = useContext(FMTableData);
-  console.log(table);
+const TableList = ({ onClick, data }) => {
+  const fmTables = data.data.tables;
 
   return (
-    <ListGroup>
+    <ListGroup size="sm">
       {fmTables.map(i => {
-        let active = i === table;
+        let active = false;
         console.log(active);
 
         return (
