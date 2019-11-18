@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-//import EditTypeField from "../EditTypeField";
 import generateData from "../../utils/generateData";
+import dynamic from "next/dynamic";
 
-const EditTypeField = dynamic(
-  () => {
-    import("../EditTypeField");
-  },
-  { ssr: false }
-);
+const DynamicComponentWithNoSSR = dynamic(() => import("../EditTypeField"), {
+  ssr: false
+});
 
 export default function FieldRow({ data, onValidChange }) {
-  if (!data) return null;
-  const [generated, setGenerated] = useState();
+  console.log(data);
 
+  const [generated, setGenerated] = useState();
+  data.exampleData = { type: "string" };
   const { id, name, exampleData } = data;
 
   useEffect(() => {
@@ -29,12 +26,10 @@ export default function FieldRow({ data, onValidChange }) {
       <th scope="row">{id}</th>
       <td>{name}</td>
       <td>
-        <EditTypeField
-          onValidChange={exampleData => {
-            onValidChange({ ...data, exampleData });
-          }}
+        <DynamicComponentWithNoSSR
+          onValidChange={exampleData => {}}
           value={exampleData}
-        ></EditTypeField>
+        ></DynamicComponentWithNoSSR>
       </td>
       <td>{generated}</td>
     </tr>

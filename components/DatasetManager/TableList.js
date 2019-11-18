@@ -1,27 +1,25 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
-const TableList = ({ onClick, data }) => {
-  const fmTables = data.data.tables;
-
+const TableList = ({ onClick, fmTables, selectedTableId }) => {
   return (
     <ListGroup size="sm">
-      {fmTables.map(i => {
-        let active = false;
-        console.log(active);
+      {fmTables.map(table => {
+        const { id, name } = table;
+        let active = id === selectedTableId;
 
         return (
           <ListGroupItem
             active={active}
             style={{ textAlign: "left" }}
             tag="button"
-            key={i.name}
+            key={name}
             action
             onClick={() => {
-              onClick(i);
+              onClick(id);
             }}
           >
-            {i.name}
+            {name}
           </ListGroupItem>
         );
       })}

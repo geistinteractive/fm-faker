@@ -1,15 +1,12 @@
 import useSWR, { trigger } from "swr";
 import fetch from "isomorphic-unfetch";
 
+
 export function useDataSets() {
   const fetcher = url => {
-    return fetch(url)
-      .then(r => {
-        return r.json();
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    return fetch(url).then(r => {
+      return r.json();
+    });
   };
   return useSWR("/api/dataset", fetcher, {
     dedupingInterval: 5000,
@@ -24,15 +21,7 @@ export function useDataset(id) {
     });
   };
 
-  if (!id) {
-    //must return a promise to indicate that nothing can be fetched yet
-    return new Promise((resolve, reject) => {
-      resolve({ data: null, error: null });
-    });
-  }
-  return useSWR(`/api/dataset/${id}`, fetcher, {
-    refreshInterval: 200000
-  });
+  return useSWR(`/api/dataset/${id}`, fetcher);
 }
 
 export async function saveNewDataSet(file) {

@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalBody
 } from "reactstrap";
-import FieldTypeEditor from "../TypeEditor";
+import FieldTypeEditor from "./TypeEditor";
 
 export default function EditTypeField({ value, onValidChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,8 @@ export default function EditTypeField({ value, onValidChange }) {
   function handleValidChange(value) {
     setNewValue(value);
   }
+
+  if (!value) return null;
 
   return (
     <>

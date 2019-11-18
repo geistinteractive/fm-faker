@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "reactstrap";
-import FieldRow from "../FieldRow";
+import FieldRow from "./FieldRow";
 
 export function FieldList({ fields, onChange }) {
   function handleValidChange(d) {
