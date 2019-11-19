@@ -7,11 +7,9 @@ const DynamicComponentWithNoSSR = dynamic(() => import("../EditTypeField"), {
 });
 
 export default function FieldRow({ data, onValidChange }) {
-  console.log(data);
-
   const [generated, setGenerated] = useState();
   data.exampleData = { type: "string" };
-  const { id, name, exampleData } = data;
+  const { id, name, exampleData, sample, schema, datatype } = data;
 
   useEffect(() => {
     async function generate() {
@@ -25,13 +23,14 @@ export default function FieldRow({ data, onValidChange }) {
     <tr>
       <th scope="row">{id}</th>
       <td>{name}</td>
+      <td>{datatype}</td>
       <td>
         <DynamicComponentWithNoSSR
           onValidChange={exampleData => {}}
-          value={exampleData}
+          schema={schema}
         ></DynamicComponentWithNoSSR>
       </td>
-      <td>{generated}</td>
+      <td>{sample}</td>
     </tr>
   );
 }

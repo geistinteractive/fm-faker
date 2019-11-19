@@ -1,5 +1,6 @@
-import { getDataSets } from "./services/db/test";
+import File from "./lastSet.json";
+import fileClassifier from "./api-services/db/classifier";
 
-getDataSets().then(r => {
-  console.log(r);
-});
+const result = fileClassifier(File);
+
+result.then(r => console.log(File.tables[1].fields));

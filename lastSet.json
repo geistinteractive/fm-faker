@@ -1,0 +1,1578 @@
+{
+  "name": "from JobTracking.xml",
+  "tables": [
+    {
+      "id": "131",
+      "name": "Global",
+      "uuid": "F5CDF358-CBAC-42A7-9A0C-94DB6364DF25",
+      "mods": {
+        "modifications": "3",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -93203572
+        }
+      ]
+    },
+    {
+      "id": "134",
+      "name": "Staff",
+      "uuid": "AB8B5D1E-CC6E-4DA8-A3E0-A68FF88569E2",
+      "mods": {
+        "modifications": "3",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Unique identifier of each record in this table",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 83265568
+        },
+        {
+          "id": "7",
+          "name": "Name_First",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "name.firstName"
+          },
+          "sample": "Creola"
+        },
+        {
+          "id": "8",
+          "name": "Name_Last",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "name.lastName"
+          },
+          "sample": "Cruickshank"
+        },
+        {
+          "id": "9",
+          "name": "Username",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Isabelle_Kunde2"
+        },
+        {
+          "id": "11",
+          "name": "User_Password",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.password"
+          },
+          "sample": "DX852cS72gPL4za"
+        },
+        {
+          "id": "15",
+          "name": "Title",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "name.jobTitle"
+          },
+          "sample": "Dynamic Response Assistant"
+        },
+        {
+          "id": "16",
+          "name": "Phone",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "chance": "phone"
+          },
+          "sample": "(657) 868-5903"
+        },
+        {
+          "id": "17",
+          "name": "Email",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "chance": "email"
+          },
+          "sample": "tonecug@atpik.ua"
+        },
+        {
+          "id": "18",
+          "name": "Address_Street",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.streetAddress"
+          },
+          "sample": "0100 Watsica Field"
+        },
+        {
+          "id": "19",
+          "name": "Address_City",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.city"
+          },
+          "sample": "New Perry"
+        },
+        {
+          "id": "20",
+          "name": "Address_State",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.stateAbbr"
+          },
+          "sample": "MI"
+        },
+        {
+          "id": "21",
+          "name": "Address_Zip",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.zipCode"
+          },
+          "sample": "16447"
+        },
+        {
+          "id": "23",
+          "name": "Filter_Job",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "est"
+        },
+        {
+          "id": "33",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "sint elit Ut"
+        },
+        {
+          "id": "34",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Beulah38"
+        },
+        {
+          "id": "35",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "do consequat"
+        },
+        {
+          "id": "36",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Karolann21"
+        },
+        {
+          "id": "37",
+          "name": "Photo",
+          "fieldtype": "Normal",
+          "datatype": "Binary",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "ut dolor non"
+        },
+        {
+          "id": "41",
+          "name": "qbo_id",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 30622720
+        },
+        {
+          "id": "42",
+          "name": "qbo_send",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -69841482
+        }
+      ]
+    },
+    {
+      "id": "135",
+      "name": "Job",
+      "uuid": "F51D6CDD-62B1-4F34-B761-5CCD52941716",
+      "mods": {
+        "modifications": "2",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Unique identifier of each record in this table",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -20196425
+        },
+        {
+          "id": "6",
+          "name": "Job_Name",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "culpa consectetur"
+        },
+        {
+          "id": "7",
+          "name": "ID_Client",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 3032769
+        },
+        {
+          "id": "8",
+          "name": "Status",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "minim mollit"
+        },
+        {
+          "id": "9",
+          "name": "Category",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "laboris irure aliqua"
+        },
+        {
+          "id": "10",
+          "name": "Date_Complete",
+          "fieldtype": "Normal",
+          "datatype": "Date",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "veniam ut"
+        },
+        {
+          "id": "11",
+          "name": "Date_Start",
+          "fieldtype": "Normal",
+          "datatype": "Date",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "proident non dolore occaecat est"
+        },
+        {
+          "id": "20",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "irure deserunt"
+        },
+        {
+          "id": "21",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Darrel91"
+        },
+        {
+          "id": "22",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "ipsum dolore culpa"
+        },
+        {
+          "id": "23",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Katharina_Reichel58"
+        },
+        {
+          "id": "25",
+          "name": "Notes",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "lorem.sentences"
+          },
+          "sample": "Illo consequatur dolorem possimus laborum. Minima deserunt ut assumenda praesentium veritatis eligendi quibusdam et illo."
+        },
+        {
+          "id": "32",
+          "name": "qbo_Balance",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 95034960
+        },
+        {
+          "id": "33",
+          "name": "qbo_BillWithParent",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -29755871
+        },
+        {
+          "id": "34",
+          "name": "qbo_FullyQualifiedName",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "mollit in"
+        },
+        {
+          "id": "35",
+          "name": "qbo_id",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 51326464
+        },
+        {
+          "id": "36",
+          "name": "qbo_send",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 94800902
+        }
+      ]
+    },
+    {
+      "id": "136",
+      "name": "Task",
+      "uuid": "95099894-F00E-4290-83F5-42A530F1EE11",
+      "mods": {
+        "modifications": "3",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Unique identifier of each record in this table",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -46397334
+        },
+        {
+          "id": "6",
+          "name": "ID_Job",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Account name of the user who last modified each record",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -66606850
+        },
+        {
+          "id": "7",
+          "name": "Date_Complete",
+          "fieldtype": "Normal",
+          "datatype": "Date",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "ut ut mollit laboru"
+        },
+        {
+          "id": "8",
+          "name": "Date_Start",
+          "fieldtype": "Normal",
+          "datatype": "Date",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "culpa fugiat in"
+        },
+        {
+          "id": "9",
+          "name": "Task_Name",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "ea amet "
+        },
+        {
+          "id": "10",
+          "name": "Status",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "fugiat et in aliqua"
+        },
+        {
+          "id": "11",
+          "name": "ID_Staff",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -50089065
+        },
+        {
+          "id": "12",
+          "name": "Date_Due",
+          "fieldtype": "Normal",
+          "datatype": "Date",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "Excepteur adipisicing dolore aliqua laborum"
+        },
+        {
+          "id": "13",
+          "name": "Description",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "ex adipisicing"
+        },
+        {
+          "id": "21",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "consequat elit et est ut"
+        },
+        {
+          "id": "22",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Jermaine.Gottlieb19"
+        },
+        {
+          "id": "23",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "l"
+        },
+        {
+          "id": "24",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Eliane_Windler79"
+        }
+      ]
+    },
+    {
+      "id": "137",
+      "name": "TimeEntry",
+      "uuid": "793812E4-363A-42B4-A095-DA7E9067E38B",
+      "mods": {
+        "modifications": "2",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Unique identifier of each record in this table",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -8711041
+        },
+        {
+          "id": "6",
+          "name": "Date_TimeEntry",
+          "fieldtype": "Normal",
+          "datatype": "Date",
+          "comment": "Date and time each record was created",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "laborum cillum"
+        },
+        {
+          "id": "8",
+          "name": "Notes",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "Date and time each record was created",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "lorem.sentences"
+          },
+          "sample": "Saepe libero reprehenderit quasi aliquam velit sunt. Et incidunt aspernatur sit. Eos vero aut vero est tempore. Ex ipsam quisquam possimus consequuntur. Quisquam nemo voluptatem corporis atque. Odit est sed ipsum sed explicabo tempora amet facilis."
+        },
+        {
+          "id": "10",
+          "name": "ID_Task",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Foreign Key",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 73544680
+        },
+        {
+          "id": "11",
+          "name": "Type_Billable",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "veniam est laboris ullamco nisi"
+        },
+        {
+          "id": "13",
+          "name": "ID_Job",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -65470467
+        },
+        {
+          "id": "16",
+          "name": "ID_Staff",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -60012212
+        },
+        {
+          "id": "17",
+          "name": "Time_Start",
+          "fieldtype": "Normal",
+          "datatype": "Time",
+          "comment": "",
+          "exampleData": "unknown",
+          "schema": "unknown",
+          "sample": "invalid schema"
+        },
+        {
+          "id": "18",
+          "name": "Time_End",
+          "fieldtype": "Normal",
+          "datatype": "Time",
+          "comment": "",
+          "exampleData": "unknown",
+          "schema": "unknown",
+          "sample": "invalid schema"
+        },
+        {
+          "id": "26",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "deserunt "
+        },
+        {
+          "id": "27",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Elbert_Aufderhar"
+        },
+        {
+          "id": "28",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "fugiat velit"
+        },
+        {
+          "id": "29",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Juanita.Pacocha50"
+        },
+        {
+          "id": "30",
+          "name": "qbo_id",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -31437234
+        },
+        {
+          "id": "31",
+          "name": "qbo_send",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -89980543
+        }
+      ]
+    },
+    {
+      "id": "138",
+      "name": "Assignment",
+      "uuid": "311E2F90-3033-4E7B-9F4C-8B42CE308AFB",
+      "mods": {
+        "modifications": "2",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Unique identifier of each record in this table",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 14433136
+        },
+        {
+          "id": "6",
+          "name": "ID_Job",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -62848675
+        },
+        {
+          "id": "7",
+          "name": "ID_Staff",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -15347437
+        },
+        {
+          "id": "11",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "velit incididunt"
+        },
+        {
+          "id": "12",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Isaiah_Mills"
+        },
+        {
+          "id": "13",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "ea"
+        },
+        {
+          "id": "14",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Angelica.Schumm4"
+        }
+      ]
+    },
+    {
+      "id": "139",
+      "name": "Client",
+      "uuid": "454A7100-4954-4270-A0CA-A39E54D75C80",
+      "mods": {
+        "modifications": "2",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "Unique identifier of each record in this table",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -50442080
+        },
+        {
+          "id": "18",
+          "name": "Status",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "in occaecat"
+        },
+        {
+          "id": "19",
+          "name": "Name",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "aute cupidatat deserunt aliquip id"
+        },
+        {
+          "id": "20",
+          "name": "Address_City",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.city"
+          },
+          "sample": "Jakubowskiview"
+        },
+        {
+          "id": "21",
+          "name": "Address_State",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.stateAbbr"
+          },
+          "sample": "RI"
+        },
+        {
+          "id": "22",
+          "name": "Address_Street",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.streetAddress"
+          },
+          "sample": "9764 Heaney Field"
+        },
+        {
+          "id": "23",
+          "name": "Address_Zip",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "address.zipCode"
+          },
+          "sample": "85746-0071"
+        },
+        {
+          "id": "24",
+          "name": "Phone",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "chance": "phone"
+          },
+          "sample": "(803) 260-4314"
+        },
+        {
+          "id": "25",
+          "name": "Email",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "chance": "email"
+          },
+          "sample": "zavulonit@wofizrak.jp"
+        },
+        {
+          "id": "31",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "irure anim officia in elit"
+        },
+        {
+          "id": "32",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Shyanne_Collier52"
+        },
+        {
+          "id": "33",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "commodo aliqua culpa ma"
+        },
+        {
+          "id": "34",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Aimee_Anderson"
+        },
+        {
+          "id": "36",
+          "name": "Logo",
+          "fieldtype": "Normal",
+          "datatype": "Binary",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "sed mollit cupid"
+        },
+        {
+          "id": "39",
+          "name": "qbo_Balance",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": -61979671
+        },
+        {
+          "id": "40",
+          "name": "qbo_BalanceWithJobs",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 54253124
+        },
+        {
+          "id": "41",
+          "name": "qbo_error",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "error message returned by QBO when attempting to sync this record",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "non velit elit labore aliqua"
+        },
+        {
+          "id": "42",
+          "name": "qbo_FullyQualifiedName",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "occaeca"
+        },
+        {
+          "id": "43",
+          "name": "qbo_id",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 70911629
+        },
+        {
+          "id": "44",
+          "name": "qbo_send",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 27726975
+        }
+      ]
+    },
+    {
+      "id": "140",
+      "name": "z_Resource",
+      "uuid": "C6BC157C-BFBD-47BB-80A2-64DFA04EE398",
+      "mods": {
+        "modifications": "2",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "8",
+          "name": "Logo",
+          "fieldtype": "Normal",
+          "datatype": "Binary",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "esse aliquip Lorem laboris non"
+        },
+        {
+          "id": "9",
+          "name": "Title",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "name.jobTitle"
+          },
+          "sample": "Human Mobility Designer"
+        },
+        {
+          "id": "10",
+          "name": "Logo_Default",
+          "fieldtype": "Normal",
+          "datatype": "Binary",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "et qui"
+        },
+        {
+          "id": "14",
+          "name": "Flag_Hide_iOS_Message",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 80573355
+        }
+      ]
+    },
+    {
+      "id": "141",
+      "name": "Template",
+      "uuid": "755A5EB4-5043-4D9B-A8CA-844B4B01E918",
+      "mods": {
+        "modifications": "1",
+        "userName": "Todd Geist",
+        "accountName": "Admin",
+        "timestamp": "2019-11-01T12:19:40"
+      },
+      "fields": [
+        {
+          "id": "1",
+          "name": "ID",
+          "fieldtype": "Normal",
+          "datatype": "Number",
+          "comment": "",
+          "exampleData": {
+            "type": "integer"
+          },
+          "schema": {
+            "type": "integer"
+          },
+          "sample": 41026307
+        },
+        {
+          "id": "2",
+          "name": "zz_Log_Create_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "dolore irure consectetur"
+        },
+        {
+          "id": "3",
+          "name": "zz_Log_Create_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Gerson_Harber30"
+        },
+        {
+          "id": "4",
+          "name": "zz_Log_Modify_Record_TS",
+          "fieldtype": "Normal",
+          "datatype": "Timestamp",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          },
+          "sample": "sunt commodo nulla consectetur incididunt"
+        },
+        {
+          "id": "5",
+          "name": "zz_Log_Modify_Record_User",
+          "fieldtype": "Normal",
+          "datatype": "Text",
+          "comment": "",
+          "exampleData": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string",
+            "faker": "internet.userName"
+          },
+          "sample": "Vince.Nienow99"
+        }
+      ]
+    }
+  ],
+  "fileName": "JobTracking.xml",
+  "userId": "twitter|14164578"
+}

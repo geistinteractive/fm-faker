@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import FieldTypeEditor from "./TypeEditor";
 
-export default function EditTypeField({ value, onValidChange }) {
+export default function EditTypeField({ schema, onValidChange }) {
   const [isOpen, setIsOpen] = useState(false);
   const [newValue, setNewValue] = useState("");
 
@@ -38,7 +38,19 @@ export default function EditTypeField({ value, onValidChange }) {
     setNewValue(value);
   }
 
-  if (!value) return null;
+  if (!schema) return null;
+
+  let fakerOrChance = "faker";
+  let desc = schema[fakerOrChance];
+
+  if (!desc) {
+    fakerOrChance = "chance";
+    desc = schema[fakerOrChance];
+  }
+
+  if (!desc) {
+    fakerOrChance = null;
+  }
 
   return (
     <>
@@ -47,7 +59,7 @@ export default function EditTypeField({ value, onValidChange }) {
         <ModalBody>
           <p>You can use chance or faker type generators</p>
           <FieldTypeEditor
-            initialValue={value}
+            initialValue={schema}
             onValidChange={handleValidChange}
           />
         </ModalBody>
@@ -61,7 +73,9 @@ export default function EditTypeField({ value, onValidChange }) {
         </ModalFooter>
       </Modal>
       <Button size="sm" color="link" onClick={open}>
-        {value.type}
+        {schema.type}
+        {fakerOrChance ? " - " + fakerOrChance : null}
+        {desc ? "." + desc : null}
       </Button>
     </>
   );

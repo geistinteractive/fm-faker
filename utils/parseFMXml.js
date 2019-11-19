@@ -3,17 +3,15 @@ import generateData from "./generateData";
 function getType(datatype) {
   switch (datatype) {
     case "Text":
-      return "string";
+      return { type: "string" };
     case "Number":
-      return "integer";
+      return { type: "integer" };
     case "Date":
-      return "string";
-    case "Time":
-      return "string";
+      return { type: "string" };
     case "Timestamp":
-      return "string";
+      return { type: "string" };
     case "Binary":
-      return "string";
+      return { type: "string" };
     default:
       return "unknown";
   }
@@ -40,7 +38,7 @@ function parseTablesFromXml(xmlDoc) {
       if (!IsGlobal) {
         const obj = attr(fieldNode);
         if (obj.fieldtype === "Normal") {
-          obj.type = getType(obj.datatype);
+          obj.exampleData = getType(obj.datatype);
           fields.push(obj);
         }
       }
@@ -54,6 +52,7 @@ function parseTablesFromXml(xmlDoc) {
     TablesArray[i] = Table;
   }
   //console.log(TablesArray);
+
   return TablesArray;
 }
 

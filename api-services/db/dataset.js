@@ -1,5 +1,7 @@
 import client from "./client";
 import { query as q } from "faunadb";
+import { writeFileSync } from "fs";
+import fileClassifer from "./classifier";
 
 const {
   Create,
@@ -17,7 +19,13 @@ const {
 const datasets = Collection("DataSets");
 
 export async function createDataset(data) {
+  await fileClassifer(data);
+  console.log(data);
+
   const result = await client.query(Create(datasets, { data }));
+
+  writeFileSync("./lastSet.json", JSON.stringify(data, null, "  "));
+
   return result;
 }
 

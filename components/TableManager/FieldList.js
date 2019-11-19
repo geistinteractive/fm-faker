@@ -12,7 +12,8 @@ export function FieldList({ fields, onChange }) {
         <tr>
           <th>Id</th>
           <th>FieldName</th>
-          <th>Type</th>
+          <th>FM Type</th>
+          <th>Schema Type</th>
           <th>Example</th>
         </tr>
       </thead>
