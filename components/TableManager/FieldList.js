@@ -3,6 +3,8 @@ import { Table } from "reactstrap";
 import FieldRow from "./FieldRow";
 
 export function FieldList({ fields, onChange }) {
+ 
+
   function handleValidChange(d) {
     onChange(d);
   }
@@ -19,11 +21,12 @@ export function FieldList({ fields, onChange }) {
       </thead>
       <tbody>
         {fields.map(data => {
+
           return (
             <FieldRow
               onValidChange={handleValidChange}
               key={data.id}
-              data={data}
+              data={data.data}
             ></FieldRow>
           );
         })}

@@ -54,14 +54,15 @@ export default function LoggedInHome() {
             <tbody>
               {datasetArray.map(dataset => {
                 const { data } = dataset;
+
                 data.id = dataset["ref"]["@ref"].id;
                 const { name, fileName, tables } = data;
 
                 return (
-                  <tr key={name}>
+                  <tr key={data.id}>
                     <td>{name}</td>
                     <td>{fileName}</td>
-                    <td>{tables.length}</td>
+                    <td>{tables.data.length}</td>
                     <td>
                       <Button color="link" size="sm">
                         Schema

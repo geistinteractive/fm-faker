@@ -5,7 +5,7 @@ const TableList = ({ onClick, fmTables, selectedTableId }) => {
   return (
     <ListGroup size="sm">
       {fmTables.map(table => {
-        const { id, name } = table;
+        const { id, name } = table.data;
         let active = id === selectedTableId;
 
         return (

@@ -13,14 +13,16 @@ const {
   Index,
   Lambda,
   Match,
-  Var
+  Var,
+  Let,
+  Select,
+  Merge
 } = q;
 
 const datasets = Collection("DataSets");
 
 export async function createDataset(data) {
   await fileClassifer(data);
-  console.log(data);
 
   const result = await client.query(Create(datasets, { data }));
 
@@ -30,17 +32,63 @@ export async function createDataset(data) {
 }
 
 export async function getDatasetsByUser(user) {
-  const findDataSetByUserQuery = Map(
-    Paginate(Match(Index("datasets_by_user"), "twitter|14164578")),
-    Lambda("dataset", Get(Var("dataset")))
-  );
-  const result = await client.query(findDataSetByUserQuery);
+  const result = await client.query(findAllUserFiles(user));
   return result;
 }
 
 export async function getDataSetById(id) {
-  const myQuery = Get(Ref(datasets, id));
+  const myQuery = Let(
+    {
+      file: Ref(Collection("fm_file"), id)
+    },
+    _buildResultForFile()
+  );
   const result = await client.query(myQuery);
 
   return result;
+}
+
+function findAllUserFiles(user) {
+  return Let(
+    {
+      findResult: Paginate(Match(Index("fm_files_by_user"), user)),
+      files: Map(Var("findResult"), Lambda("file", _buildResultForFile()))
+    },
+    Var("files")
+  );
+}
+
+function _buildResultForFile() {
+  return Let(
+    {
+      tables: Map(
+        Paginate(Match(Index("tables_by_fk"), Var("file"))),
+        Lambda(
+          "table",
+          Let(
+            {
+              fields: Map(
+                Paginate(Match(Index("field_by_table"), Var("table"))),
+                Lambda("field", Get(Var("field")))
+              )
+            },
+            {
+              ref: Select("ref", Get(Var("table"))),
+              ts: Select("ts", Get(Var("table"))),
+              data: Merge(Select("data", Get(Var("table"))), {
+                fields: Var("fields")
+              })
+            }
+          )
+        )
+      )
+    },
+    {
+      ref: Select("ref", Get(Var("file"))),
+      ts: Select("ts", Get(Var("file"))),
+      data: Merge(Select("data", Get(Var("file"))), {
+        tables: Var("tables")
+      })
+    }
+  );
 }

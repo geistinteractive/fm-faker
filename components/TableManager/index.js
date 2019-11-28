@@ -2,7 +2,10 @@ import React from "react";
 
 import NumberOfRecords from "./NumberOfRecords";
 import { FieldList } from "./FieldList";
+
 export default function FMTable({ onFieldUpdate, onSaveTableRecords, data }) {
+  console.log(data);
+
   function handleNumberOfRecordsSave(data) {
     onSaveTableRecords(data);
   }
@@ -20,7 +23,10 @@ export default function FMTable({ onFieldUpdate, onSaveTableRecords, data }) {
         onSave={handleNumberOfRecordsSave}
         data={data}
       ></NumberOfRecords>
-      <FieldList onChange={handleFieldChange} fields={data.fields}></FieldList>
+      <FieldList
+        onChange={handleFieldChange}
+        fields={data.data.fields.data}
+      ></FieldList>
     </>
   );
 }
