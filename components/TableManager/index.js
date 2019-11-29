@@ -4,8 +4,6 @@ import NumberOfRecords from "./NumberOfRecords";
 import { FieldList } from "./FieldList";
 
 export default function FMTable({ onFieldUpdate, onSaveTableRecords, data }) {
-  console.log(data);
-
   function handleNumberOfRecordsSave(data) {
     onSaveTableRecords(data);
   }
@@ -18,11 +16,8 @@ export default function FMTable({ onFieldUpdate, onSaveTableRecords, data }) {
 
   return (
     <>
-      <h2>{data.name}</h2>
-      <NumberOfRecords
-        onSave={handleNumberOfRecordsSave}
-        data={data}
-      ></NumberOfRecords>
+      <h4>Fields in {data.data.name} Table</h4>
+
       <FieldList
         onChange={handleFieldChange}
         fields={data.data.fields.data}

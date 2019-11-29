@@ -18,7 +18,9 @@ class MyDocument extends Document {
           ></link>
         </Head>
 
-        <body style={{ margin: "0px", padding: "0px" }}>
+        <body
+          style={{ margin: "0px", padding: "0px", backgroundColor: "#f8f9fa" }}
+        >
           <Main />
           <NextScript />
         </body>

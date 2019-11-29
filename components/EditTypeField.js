@@ -72,7 +72,12 @@ export default function EditTypeField({ schema, onValidChange }) {
           </Button>
         </ModalFooter>
       </Modal>
-      <Button size="sm" color="link" onClick={open}>
+      <Button
+        style={{ padding: "0px", fontSize: "small" }}
+        size="sm"
+        color="link"
+        onClick={open}
+      >
         {schema.type}
         {fakerOrChance ? " - " + fakerOrChance : null}
         {desc ? "." + desc : null}

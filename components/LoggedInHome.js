@@ -3,6 +3,8 @@ import { useDataSets } from "../client-api/dataset";
 import { Table, Row, Col, Button } from "reactstrap";
 import AddNewDataSet from "./AddNewDatasetModal";
 import Link from "next/link";
+import SmallBorderedTable from "./Styled/SmallBorderedTable";
+import CenteredTD from "./Styled/CenteredTD";
 
 export default function LoggedInHome() {
   const { data, error } = useDataSets();
@@ -41,7 +43,7 @@ export default function LoggedInHome() {
       </Row>
       <Row>
         <Col>
-          <Table size="sm">
+          <SmallBorderedTable style={{ backgroundColor: "white" }} size="sm">
             <thead>
               <tr>
                 <th>Name</th>
@@ -60,9 +62,9 @@ export default function LoggedInHome() {
 
                 return (
                   <tr key={data.id}>
-                    <td>{name}</td>
-                    <td>{fileName}</td>
-                    <td>{tables.data.length}</td>
+                    <CenteredTD>{name}</CenteredTD>
+                    <CenteredTD>{fileName}</CenteredTD>
+                    <CenteredTD>{tables.data.length}</CenteredTD>
                     <td>
                       <Button color="link" size="sm">
                         Schema
@@ -80,7 +82,7 @@ export default function LoggedInHome() {
                 );
               })}
             </tbody>
-          </Table>
+          </SmallBorderedTable>
         </Col>
       </Row>
     </>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import AceEditor from "react-ace";
 import jsf from "json-schema-faker";
 import chance from "chance";
@@ -15,6 +15,7 @@ function generateData(schema) {
 
 export default function TypeEditor({ initialValue, onValidChange }) {
   const [generatedData, setGeneratedData] = useState();
+
   async function onValidJSON(schema) {
     try {
       onValidChange(schema);
@@ -47,6 +48,8 @@ export default function TypeEditor({ initialValue, onValidChange }) {
  * @param {*} param0
  */
 function JSONEditor({ onValidJSON, initialValue }) {
+  //editor.config.set("workerPath", "Scripts/Ace");
+  //https://stackoverflow.com/questions/14053820/how-to-set-the-source-path-in-ace-editor
   const [state, setState] = useState(JSON.stringify(initialValue, null, "\t"));
 
   function handleChange(newValue) {

@@ -20,17 +20,21 @@ export default function FieldRow({ data, onValidChange }) {
   }, [data]);
 
   return (
-    <tr>
-      <th scope="row">{id}</th>
-      <td>{name}</td>
-      <td>{datatype}</td>
+    <tr style={{ fontSize: "smaller" }}>
+      <CenteredTD>{id}</CenteredTD>
+      <CenteredTD>{name}</CenteredTD>
+      <CenteredTD>{datatype}</CenteredTD>
       <td>
         <DynamicComponentWithNoSSR
           onValidChange={exampleData => {}}
           schema={schema}
         ></DynamicComponentWithNoSSR>
       </td>
-      <td>{sample}</td>
+      <CenteredTD>{sample}</CenteredTD>
     </tr>
   );
+}
+
+function CenteredTD({ children }) {
+  return <td style={{ verticalAlign: "middle" }}>{children}</td>;
 }
