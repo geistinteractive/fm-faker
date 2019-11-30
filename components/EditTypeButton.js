@@ -11,7 +11,7 @@ import FieldTypeEditor from "./TypeEditor";
 
 export default function EditTypeField({ schema, onValidChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [newValue, setNewValue] = useState("");
+  const [newValue, setNewValue] = useState();
 
   function open() {
     setIsOpen(true);
@@ -27,9 +27,8 @@ export default function EditTypeField({ schema, onValidChange }) {
 
   function save() {
     if (newValue) {
+      // only update if there is a newValue
       onValidChange(newValue);
-    } else {
-      onValidChange(value);
     }
     close();
   }
