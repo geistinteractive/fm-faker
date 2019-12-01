@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import generateData from "../../utils/generateData";
 import dynamic from "next/dynamic";
 import { saveSchemaOverride } from "../../client-api/field";
-
+import CenteredTD from "../Styled/CenteredTD";
 const EditTypeButton = dynamic(() => import("../EditTypeButton"), {
   ssr: false
 });
@@ -18,8 +18,12 @@ export default function FieldRow({ data, dataSetId }) {
 
   useEffect(() => {
     async function generate() {
-      const x = await generateData(theSchema);
-      setGenerated(x);
+      try {
+        const x = await generateData(theSchema);
+        setGenerated(x);
+      } catch (error) {
+        setGenerated("");
+      }
     }
     generate();
   }, [theSchema]);
@@ -47,8 +51,4 @@ export default function FieldRow({ data, dataSetId }) {
       <CenteredTD>{generated}</CenteredTD>
     </tr>
   );
-}
-
-function CenteredTD({ children }) {
-  return <td style={{ verticalAlign: "middle" }}>{children}</td>;
 }

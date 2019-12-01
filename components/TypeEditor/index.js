@@ -13,14 +13,22 @@ function generateData(schema) {
   return jsf.resolve(schema);
 }
 
-export default function TypeEditor({ initialValue, onValidChange }) {
+export default function TypeEditor({
+  initialValue,
+  onValidChange,
+  onInvalidChange
+}) {
   const [generatedData, setGeneratedData] = useState();
 
   async function onValidJSON(schema) {
     try {
-      onValidChange(schema);
       const data = await generateData(schema);
       setGeneratedData(data);
+      if (data !== "undefined") {
+        onValidChange(schema);
+      } else {
+        onInvalidChange();
+      }
     } catch (e) {}
   }
   useEffect(() => {
@@ -37,6 +45,7 @@ export default function TypeEditor({ initialValue, onValidChange }) {
     <>
       <JSONEditor
         onValidJSON={onValidJSON}
+        onInvalidJSON={onInvalidChange}
         initialValue={initialValue}
       ></JSONEditor>
       <DisplayGeneratedData data={generatedData}></DisplayGeneratedData>
@@ -47,7 +56,7 @@ export default function TypeEditor({ initialValue, onValidChange }) {
  *
  * @param {*} param0
  */
-function JSONEditor({ onValidJSON, initialValue }) {
+function JSONEditor({ onValidJSON, onInvalidJSON, initialValue }) {
   //editor.config.set("workerPath", "Scripts/Ace");
   //https://stackoverflow.com/questions/14053820/how-to-set-the-source-path-in-ace-editor
   //
@@ -59,7 +68,9 @@ function JSONEditor({ onValidJSON, initialValue }) {
       const validValue = JSON.parse(newValue);
       onValidJSON(validValue);
       setState(newValue);
-    } catch (e) {}
+    } catch (e) {
+      onInvalidJSON();
+    }
   }
 
   return (

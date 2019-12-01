@@ -16,6 +16,7 @@ export default function EditTypeField({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [newValue, setNewValue] = useState();
+  const [saveDisabled, setSaveDisabled] = useState(true);
 
   function open() {
     setIsOpen(true);
@@ -39,6 +40,10 @@ export default function EditTypeField({
 
   function handleValidChange(value) {
     setNewValue(value);
+    setSaveDisabled(false);
+  }
+  function handleInValidChange(value) {
+    setSaveDisabled(true);
   }
 
   if (!schema) return null;
@@ -55,6 +60,14 @@ export default function EditTypeField({
     fakerOrChance = null;
   }
 
+  let enumValue = false;
+  if (!fakerOrChance) {
+    if (schema["enum"]) {
+      enumValue = true;
+      desc = " - Enum " + schema["enum"].join(", ");
+    }
+  }
+
   return (
     <>
       <Modal isOpen={isOpen}>
@@ -64,13 +77,14 @@ export default function EditTypeField({
           <FieldTypeEditor
             initialValue={schema}
             onValidChange={handleValidChange}
+            onInvalidChange={handleInValidChange}
           />
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={cancel}>
             Cancel
           </Button>{" "}
-          <Button color="primary" onClick={save}>
+          <Button disabled={saveDisabled} color="primary" onClick={save}>
             Save
           </Button>
         </ModalFooter>
@@ -82,8 +96,10 @@ export default function EditTypeField({
         onClick={open}
       >
         {schema.type}
-        {fakerOrChance ? " - " + fakerOrChance : null}
-        {desc ? "." + desc : null}
+        {fakerOrChance
+          ? " - " + fakerOrChance + (desc ? "." + desc : null)
+          : null}
+        {enumValue ? desc : null}
       </Button>
     </>
   );
