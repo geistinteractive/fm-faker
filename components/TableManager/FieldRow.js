@@ -3,7 +3,7 @@ import generateData from "../../utils/generateData";
 import dynamic from "next/dynamic";
 import { saveSchemaOverride } from "../../client-api/field";
 
-const DynamicComponentWithNoSSR = dynamic(() => import("../EditTypeButton"), {
+const EditTypeButton = dynamic(() => import("../EditTypeButton"), {
   ssr: false
 });
 
@@ -39,10 +39,10 @@ export default function FieldRow({ data, dataSetId }) {
       <CenteredTD>{name}</CenteredTD>
       <CenteredTD>{datatype}</CenteredTD>
       <td>
-        <DynamicComponentWithNoSSR
+        <EditTypeButton
           onValidChange={handleValidChange}
           schema={theSchema}
-        ></DynamicComponentWithNoSSR>
+        ></EditTypeButton>
       </td>
       <CenteredTD>{generated}</CenteredTD>
     </tr>
