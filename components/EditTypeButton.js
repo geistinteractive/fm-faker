@@ -9,7 +9,11 @@ import {
 } from "reactstrap";
 import FieldTypeEditor from "./TypeEditor";
 
-export default function EditTypeField({ schema, onValidChange }) {
+export default function EditTypeField({
+  schema,
+  schemaOverride,
+  onValidChange
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [newValue, setNewValue] = useState();
 

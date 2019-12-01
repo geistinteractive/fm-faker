@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from "react";
 import generateData from "../../utils/generateData";
 import dynamic from "next/dynamic";
+import { saveSchemaOverride } from "../../client-api/field";
 
-const DynamicComponentWithNoSSR = dynamic(() => import("../EditTypeField"), {
+const DynamicComponentWithNoSSR = dynamic(() => import("../EditTypeButton"), {
   ssr: false
 });
 
-export default function FieldRow({ data, onValidChange }) {
+export default function FieldRow({ data, dataSetId }) {
   const [generated, setGenerated] = useState();
   data.exampleData = { type: "string" };
-  const { id, name, exampleData, sample, schema, datatype } = data;
+  const { id, name, schema, schemaOverride, datatype, ref } = data;
+
+  const [theSchema, setTheSchema] = useState(
+    schemaOverride ? schemaOverride : schema
+  );
 
   useEffect(() => {
     async function generate() {
-      const data = await generateData(exampleData);
-      setGenerated(data);
+      const x = await generateData(theSchema);
+      setGenerated(x);
     }
     generate();
-  }, [data]);
+  }, [theSchema]);
+
+  async function handleValidChange(newSchema) {
+    try {
+      const r = await saveSchemaOverride(ref, newSchema, dataSetId);
+      setTheSchema(newSchema);
+    } catch (e) {
+      console.log(e.toString());
+    }
+  }
 
   return (
     <tr style={{ fontSize: "smaller" }}>
@@ -26,11 +40,11 @@ export default function FieldRow({ data, onValidChange }) {
       <CenteredTD>{datatype}</CenteredTD>
       <td>
         <DynamicComponentWithNoSSR
-          onValidChange={exampleData => {}}
-          schema={schema}
+          onValidChange={handleValidChange}
+          schema={theSchema}
         ></DynamicComponentWithNoSSR>
       </td>
-      <CenteredTD>{sample}</CenteredTD>
+      <CenteredTD>{generated}</CenteredTD>
     </tr>
   );
 }

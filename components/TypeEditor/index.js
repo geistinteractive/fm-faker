@@ -50,6 +50,8 @@ export default function TypeEditor({ initialValue, onValidChange }) {
 function JSONEditor({ onValidJSON, initialValue }) {
   //editor.config.set("workerPath", "Scripts/Ace");
   //https://stackoverflow.com/questions/14053820/how-to-set-the-source-path-in-ace-editor
+  //
+  //
   const [state, setState] = useState(JSON.stringify(initialValue, null, "\t"));
 
   function handleChange(newValue) {

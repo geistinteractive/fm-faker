@@ -38,7 +38,7 @@ export default function DatasetManager({ dataSetId }) {
           />
         </Col>
         <Col>
-          <TableManager data={selectedTable} />
+          <TableManager data={selectedTable} dataSetId={dataSetId} />
         </Col>
       </Row>
     </>

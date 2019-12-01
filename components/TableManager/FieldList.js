@@ -4,7 +4,7 @@ import idFromRef from "../../api-services/db/fauna-utils/idFromRef";
 
 import SmallBorderedTable from "../Styled/SmallBorderedTable";
 
-export function FieldList({ fields, onChange }) {
+export function FieldList({ fields, onChange, dataSetId }) {
   function handleValidChange(d) {
     onChange(d);
   }
@@ -22,13 +22,15 @@ export function FieldList({ fields, onChange }) {
           <th>Sample Data</th>
         </tr>
       </thead>
-      <tbody smaller>
-        {fields.map(data => {
+      <tbody>
+        {fields.map(field => {
+          field.data.ref = idFromRef(field.ref);
           return (
             <FieldRow
               onValidChange={handleValidChange}
-              key={idFromRef(data.ref)}
-              data={data.data}
+              key={field.data.ref}
+              data={field.data}
+              dataSetId={dataSetId}
             ></FieldRow>
           );
         })}
