@@ -19,6 +19,7 @@ export default function TypeEditor({
     try {
       const data = await generateData(schema);
       setGeneratedData(data);
+
       if (data !== "undefined") {
         onValidChange(schema);
       } else {
@@ -62,10 +63,10 @@ function JSONEditor({ onValidJSON, onInvalidJSON, initialValue }) {
     try {
       const validValue = JSON.parse(newValue);
       onValidJSON(validValue);
-      setState(newValue);
     } catch (e) {
       onInvalidJSON();
     }
+    setState(newValue);
   }
 
   return (
