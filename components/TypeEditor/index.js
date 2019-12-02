@@ -6,12 +6,7 @@ import chance from "chance";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-github";
 
-function generateData(schema) {
-  jsf.extend("chance", chance);
-  jsf.extend("faker", () => require("faker"));
-  jsf.option({ resolveJsonPath: true });
-  return jsf.resolve(schema);
-}
+import generateData from "../../utils/generateData";
 
 export default function TypeEditor({
   initialValue,
