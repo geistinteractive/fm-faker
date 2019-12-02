@@ -1,12 +1,10 @@
 import React, { useState, useEffect, createRef } from "react";
 import AceEditor from "react-ace";
-import jsf from "json-schema-faker";
-import chance from "chance";
 
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-github";
 
-import generateData from "../../utils/generateData";
+import generateData from "../../utils/generateData/index.js";
 
 export default function TypeEditor({
   initialValue,
