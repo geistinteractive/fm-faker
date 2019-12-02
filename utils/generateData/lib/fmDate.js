@@ -9,7 +9,7 @@ export default function fmDate(value, schema) {
     date = relativeDays(value.relativeDays);
   } else {
     // default for now
-    date = relativeDays();
+    date = relativeDays({});
   }
 
   return format(date, dateFormat);
