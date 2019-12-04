@@ -25,8 +25,6 @@ export default function fmDate(value, schema) {
 }
 
 function relativeDays({ from = -500000, to = 50000 }) {
-  console.log(from, to);
-
   let d = new Date();
 
   if (from > to) {
@@ -35,7 +33,6 @@ function relativeDays({ from = -500000, to = 50000 }) {
   }
 
   const r = randomIntFromInterval(from, to);
-  console.log(r);
 
   if (d < 0) {
     d = subDays(d, r);
