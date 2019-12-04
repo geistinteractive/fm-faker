@@ -148,7 +148,8 @@ function createFileQuery(data) {
                   datatype: Select("datatype", Var("field")),
                   comment: Select("comment", Var("field")),
                   schema: Select("schema", Var("field")),
-                  sample: Select("sample", Var("field"))
+                  autoEnter: Select("autoEnter", Var("field")),
+                  validation: Select("validation", Var("field"))
                 }
               })
             )

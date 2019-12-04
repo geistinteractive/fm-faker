@@ -38,8 +38,15 @@ function parseTablesFromXml(xmlDoc) {
         : false;
       if (!IsGlobal) {
         const obj = attr(fieldNode);
+
         if (obj.fieldtype === "Normal") {
+          const AutoEnterNode = fieldNode.getElementsByTagName("AutoEnter")[0];
+          const ValidationNode = fieldNode.getElementsByTagName(
+            "Validation"
+          )[0];
           obj.exampleData = getType(obj.datatype);
+          obj.autoEnter = attr(AutoEnterNode);
+          obj.validation = attr(ValidationNode);
           fields.push(obj);
         }
       }

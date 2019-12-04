@@ -3,10 +3,16 @@ import generateData from "../../../utils/generateData";
 export default async function fieldClassifier(Field) {
   Field.schema = getType(Field.datatype);
   byName(Field);
-  try {
-    Field.sample = await generateData(Field.schema);
-  } catch (e) {
-    Field.sample = "invalid schema";
+  if (Field.validation.unique === "True" || Field.autoEnter.unique) {
+    Field.schema.unique = true;
+  }
+  if (
+    Field.autoEnter.type === "CreationTimestamp" ||
+    Field.autoEnter.type === "ModificationTimestamp"
+  ) {
+    Field.schema["fm-timestamp"] = {
+      relativeDays: { from: -400, to: -1 }
+    };
   }
 }
 
