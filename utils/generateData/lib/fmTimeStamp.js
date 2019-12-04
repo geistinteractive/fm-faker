@@ -2,12 +2,12 @@ import { parse, format, differenceInSeconds, addSeconds } from "date-fns";
 import { randomIntFromInterval } from "./utils";
 
 export default function fmTime(value, schema) {
-  let theFormat = "H:mm:ss";
+  let theFormat = "MM/dd/yyyy H:mm:ss";
   if (value.format) theFormat = value.format;
 
-  let DayBegin = parse("0:00:00", "H:mm:ss", new Date());
+  let DayBegin = parse("01/01/0001 0:00:00", "MM/dd/yyyy H:mm:ss", new Date());
   let minTimeInSeconds = 0;
-  let maxTimeInSeconds = 86399;
+  let maxTimeInSeconds = 60 * 60 * 24 * 365 * 4000;
 
   if (value.range) {
     if (value.range.from) {
@@ -17,7 +17,7 @@ export default function fmTime(value, schema) {
     }
     if (value.range.to) {
       let maxTime = parse(value.range.to, theFormat, new Date());
-      const maxTimeInSeconds = differenceInSeconds(maxTime, DayBegin);
+      maxTimeInSeconds = differenceInSeconds(maxTime, DayBegin);
     }
   }
 
