@@ -1,17 +1,24 @@
 import React, { useState } from "react";
-import { useDataSets } from "../client-api/dataset";
+import { useDataSets, deleteById } from "../client-api/dataset";
 import { Table, Row, Col, Button } from "reactstrap";
 import AddNewDataSet from "./AddNewDatasetModal";
 import Link from "next/link";
 import SmallBorderedTable from "./Styled/SmallBorderedTable";
 import CenteredTD from "./Styled/CenteredTD";
+import DeleteDataSetButton from "./DeleteDataSetButton";
 
 export default function LoggedInHome() {
-  const { data, error } = useDataSets();
+  const { data, error, revalidate } = useDataSets();
   const [modal, setModal] = useState(false);
 
   if (!data) return null;
   const datasetArray = data.data;
+
+  const handleConfirmDelete = async id => {
+    console.log("deleting", id);
+    await deleteById(id);
+    revalidate();
+  };
 
   return (
     <>
@@ -36,6 +43,7 @@ export default function LoggedInHome() {
               setModal(false);
             }}
             onValidSave={() => {
+              revalidate();
               setModal(false);
             }}
           />
@@ -77,6 +85,11 @@ export default function LoggedInHome() {
                           Edit
                         </Button>
                       </Link>
+                      <DeleteDataSetButton
+                        onDeleteConfirmed={() => {
+                          handleConfirmDelete(data.id);
+                        }}
+                      />
                     </td>
                   </tr>
                 );

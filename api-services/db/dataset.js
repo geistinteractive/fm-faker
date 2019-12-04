@@ -24,17 +24,20 @@ const datasets = Collection("DataSets");
 
 export async function createDataset(data) {
   await fileClassifer(data);
-  const theQuery = createFile(data);
-
+  const theQuery = createFileQuery(data);
   const result = await client.query(theQuery);
-
-  writeFileSync("./lastSet.json", JSON.stringify(data, null, "  "));
-
   return result;
 }
 
 export async function getDatasetsByUser(user) {
   const result = await client.query(findAllUserFiles(user));
+  return result;
+}
+
+export async function deleteById(id) {
+  const DeleteFunction = q.Function("fm_file_delete");
+  const DeleteQuery = Call(DeleteFunction, id);
+  const result = await client.query(DeleteQuery);
   return result;
 }
 
@@ -95,7 +98,7 @@ function _buildResultForFile() {
   );
 }
 
-function createFile(data) {
+function createFileQuery(data) {
   return Let(
     {
       file: data,

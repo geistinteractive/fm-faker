@@ -1,7 +1,6 @@
 import useSWR, { trigger } from "swr";
 import fetch from "isomorphic-unfetch";
 
-
 export function useDataSets() {
   const fetcher = url => {
     return fetch(url).then(r => {
@@ -34,6 +33,22 @@ export async function saveNewDataSet(file) {
       headers: {
         "Content-Type": "application/json"
       }
+    });
+    trigger(url); // revalidate datasets
+    return true;
+  } catch (e) {
+    console.log(e);
+
+    return false;
+  }
+}
+
+export async function deleteById(id) {
+  const url = "/api/dataset";
+
+  try {
+    await fetch(`${url}/${id}`, {
+      method: "Delete"
     });
     trigger(url); // revalidate datasets
     return true;
