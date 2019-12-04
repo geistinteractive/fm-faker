@@ -1,4 +1,10 @@
-import { parse, format, differenceInSeconds, addSeconds } from "date-fns";
+import {
+  parse,
+  format,
+  differenceInSeconds,
+  addSeconds,
+  addDays
+} from "date-fns";
 import { randomIntFromInterval } from "./utils";
 
 export default function fmTime(value, schema) {
@@ -19,14 +25,26 @@ export default function fmTime(value, schema) {
       let maxTime = parse(value.range.to, theFormat, new Date());
       maxTimeInSeconds = differenceInSeconds(maxTime, DayBegin);
     }
+
+    const randomSeconds = randomIntFromInterval(
+      minTimeInSeconds,
+      maxTimeInSeconds
+    );
+
+    const time = addSeconds(DayBegin, randomSeconds);
+
+    return format(time, theFormat);
+  } else if (value.relativeDays) {
+    let minDays = -365 * 2000;
+    let maxDays = 365 * 2000;
+
+    if (value.relativeDays.from !== undefined)
+      minDays = value.relativeDays.from;
+    if (value.relativeDays.to !== undefined) maxDays = value.relativeDays.to;
+
+    const rDays = randomIntFromInterval(minDays, maxDays);
+
+    const timestamp = addDays(new Date(), rDays);
+    return format(timestamp, theFormat);
   }
-
-  const randomSeconds = randomIntFromInterval(
-    minTimeInSeconds,
-    maxTimeInSeconds
-  );
-
-  const time = addSeconds(DayBegin, randomSeconds);
-
-  return format(time, theFormat);
 }
