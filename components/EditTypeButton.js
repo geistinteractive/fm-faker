@@ -90,17 +90,73 @@ export default function EditTypeField({
         </ModalFooter>
       </Modal>
       <Button
-        style={{ padding: "0px", fontSize: "small" }}
+        style={{ padding: "0px", fontSize: "small", textAlign: "left" }}
         size="sm"
         color="link"
         onClick={open}
       >
         {schema.type}
-        {fakerOrChance
-          ? " - " + fakerOrChance + (desc ? "." + desc : null)
-          : null}
-        {enumValue ? desc : null}
+        {schemaLabel(schema)}
       </Button>
     </>
   );
+}
+
+function schemaLabel(schema) {
+  let fakerOrChance = "faker";
+  let desc = schema[fakerOrChance];
+
+  if (!desc) {
+    fakerOrChance = "chance";
+    desc = schema[fakerOrChance];
+  }
+
+  if (!desc) {
+    fakerOrChance = null;
+  }
+
+  let enumValue = false;
+  if (!fakerOrChance) {
+    if (schema["enum"]) {
+      enumValue = true;
+      desc = " - Enum " + schema["enum"].join(", ");
+    }
+  }
+
+  if (fakerOrChance) {
+    return (
+      " - " + fakerOrChance + (desc ? "." + desc : "") + (enumValue ? desc : "")
+    );
+  }
+
+  if (schema["fm-timestamp"]) {
+    const settings = schema["fm-timestamp"];
+    let note = "";
+    if (settings.range) {
+      note = "- range";
+    } else if (settings.relativeDays) {
+      note = " - relative";
+    }
+    return " - FM Timestamp" + note;
+  }
+
+  if (schema["fm-date"] !== undefined) {
+    const settings = schema["fm-date"];
+    let note = "";
+    if (settings.range) {
+      note = " - range";
+    } else if (settings.relativeDays) {
+      note = " - relative";
+    }
+    return " - FM Date" + note;
+  }
+
+  if (schema["fm-time"] !== undefined) {
+    const settings = schema["fm-time"];
+    let note = "";
+    if (settings.range) {
+      note = " - range";
+    }
+    return " - FM Time" + note;
+  }
 }
