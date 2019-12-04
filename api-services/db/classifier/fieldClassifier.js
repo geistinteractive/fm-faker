@@ -18,6 +18,8 @@ function getType(datatype) {
       return { type: "integer", minimum: 0 };
     case "Date":
       return { type: "string" };
+    case "Time":
+      return { type: "string" };
     case "Timestamp":
       return { type: "string" };
     case "Binary":
