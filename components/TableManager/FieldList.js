@@ -1,10 +1,13 @@
 import React from "react";
 import FieldRow from "./FieldRow";
 import idFromRef from "../../api-services/db/fauna-utils/idFromRef";
+import sortBy from "lodash.sortby";
 
 import SmallBorderedTable from "../Styled/SmallBorderedTable";
 
 export function FieldList({ fields, onChange, dataSetId }) {
+  fields = sortBy(fields, f => f.data.name);
+
   function handleValidChange(d) {
     onChange(d);
   }
