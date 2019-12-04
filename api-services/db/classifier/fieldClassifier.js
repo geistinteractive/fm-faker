@@ -17,11 +17,11 @@ function getType(datatype) {
     case "Number":
       return { type: "integer", minimum: 0 };
     case "Date":
-      return { type: "string" };
+      return { type: "string", "fm-date": "" };
     case "Time":
-      return { type: "string" };
+      return { type: "string", "fm-time": "" };
     case "Timestamp":
-      return { type: "string" };
+      return { type: "string", "fm-timestamp": "" };
     case "Binary":
       return { type: "string" };
     default:

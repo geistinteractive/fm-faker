@@ -1,5 +1,6 @@
 import useSWR, { trigger } from "swr";
 import fetch from "isomorphic-unfetch";
+import sortBy from "lodash.sortby";
 
 export function useDataSets() {
   const fetcher = url => {
@@ -15,9 +16,17 @@ export function useDataSets() {
 
 export function useDataset(id) {
   const fetcher = url => {
-    return fetch(url).then(r => {
-      return r.json();
-    });
+    return fetch(url)
+      .then(r => {
+        return r.json();
+      })
+      .then(data => {
+        const tables = data.data.tables.data;
+        const sorted = sortBy(tables, t => t.data.name);
+        data.data.tables.data = sorted;
+
+        return data;
+      });
   };
 
   return useSWR(`/api/dataset/${id}`, fetcher);

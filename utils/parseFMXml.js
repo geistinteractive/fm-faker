@@ -1,4 +1,5 @@
 import generateData from "./generateData";
+import sortBy from "lodash.sortby";
 
 function getType(datatype) {
   switch (datatype) {
@@ -44,16 +45,18 @@ function parseTablesFromXml(xmlDoc) {
       }
     }
 
+    const fieldsSorted = sortBy(fields);
     const UUIDNode = TablesNodes[i].getElementsByTagName("UUID")[0];
     const Table = attr(TablesNodes[i]);
     Table.uuid = UUIDNode.textContent;
     Table.mods = attr(UUIDNode);
-    Table.fields = fields;
+    Table.fields = fieldsSorted;
     TablesArray[i] = Table;
   }
-  //console.log(TablesArray);
 
-  return TablesArray;
+  const sorted = sortBy(TablesArray, t => t.name);
+
+  return sorted;
 }
 
 function attr(node) {
