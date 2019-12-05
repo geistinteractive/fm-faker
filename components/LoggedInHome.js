@@ -6,7 +6,11 @@ import Link from "next/link";
 import SmallBorderedTable from "./Styled/SmallBorderedTable";
 import CenteredTD from "./Styled/CenteredTD";
 import DeleteDataSetButton from "./DeleteDataSetButton";
-import { downloadDataSetJSON } from "../utils/schemaGenerators";
+import {
+  downloadDataSetJSON,
+  downloadFullSetCSVs,
+  downloadDataSetSchema
+} from "../utils/schemaGenerators";
 
 export default function LoggedInHome() {
   const { data, error, revalidate } = useDataSets();
@@ -84,8 +88,23 @@ export default function LoggedInHome() {
                       >
                         JSON Data
                       </Button>
-                      <Button color="link" size="sm">
-                        Data
+                      <Button
+                        onClick={() => {
+                          downloadFullSetCSVs(data);
+                        }}
+                        color="link"
+                        size="sm"
+                      >
+                        CSV Data
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          downloadDataSetSchema(data);
+                        }}
+                        color="link"
+                        size="sm"
+                      >
+                        Schema
                       </Button>
                       <Link href={`/dataset/[id]`} as={`/dataset/${data.id}`}>
                         <Button color="link" size="sm">

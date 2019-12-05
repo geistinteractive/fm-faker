@@ -19,13 +19,22 @@ export async function downloadDataSetJSON(dataSet) {
   saveJSONFile(data, dataSet.fileName);
 }
 
-export function downloadTableSchema(table) {
-  const name = table.name + ".schema";
-  const file = generateTableSchema(table);
-  const fileJSON = JSON.stringify(file, null, "  ");
-  const blob = new Blob([fileJSON], { type: "application/json" });
-  FileSaver.saveAs(blob, `${name}.json`);
+export function downloadDataSetSchema(dataSet) {
+  const file = _generateFullSetSChema(dataSet);
+  saveJSONFile(file, dataSet.fileName);
   return null;
+}
+
+export async function downloadFullSetCSVs(dataSet) {
+  const schema = _generateFullSetSChema(dataSet);
+  const data = await generateData(schema);
+
+  const tableNames = Object.keys(data);
+  tableNames.forEach(async name => {
+    const d = data[name];
+    const csvData = await convertToCSV(d);
+    saveCSVFile(csvData, name);
+  });
 }
 
 export async function downloadCSV(table) {
@@ -38,6 +47,13 @@ export async function downloadCSV(table) {
 
   const blob = new Blob([csvData], { type: "text/csv" });
   FileSaver.saveAs(blob, `${name}.csv`);
+  return null;
+}
+
+export function downloadTableSchema(table) {
+  const name = table.name + ".schema";
+  const file = generateTableSchema(table);
+  saveJSONFile(file, name);
   return null;
 }
 
@@ -88,4 +104,9 @@ function saveJSONFile(data, name) {
   const fileJSON = JSON.stringify(data, null, "  ");
   const blob = new Blob([fileJSON], { type: "application/json" });
   FileSaver.saveAs(blob, `${name}.json`);
+}
+
+function saveCSVFile(data, name) {
+  const blob = new Blob([data], { type: "text/csv" });
+  FileSaver.saveAs(blob, `${name}.csv`);
 }
