@@ -1,11 +1,24 @@
 import FileSaver from "file-saver";
 import { convertToCSV } from "./convertToCSV";
 import generateData from "./generateData";
+import sortBy from "lodash.sortby";
 
 export function generateTableSchema(table) {
   const schema = _generateTableSchema(table);
   return schema;
 }
+
+export function generateFullSchema(dataSet) {
+  const schema = _generateFullSetSChema(dataSet);
+  return schema;
+}
+
+export async function downloadDataSetJSON(dataSet) {
+  const schema = _generateFullSetSChema(dataSet);
+  const data = await generateData(schema);
+  saveJSONFile(data, dataSet.fileName);
+}
+
 export function downloadTableSchema(table) {
   const name = table.name + ".schema";
   const file = generateTableSchema(table);
@@ -29,29 +42,50 @@ export async function downloadCSV(table) {
 }
 
 function _generateTableSchema(table, schemaObj = {}) {
-  const { definitions = {}, properties = {}, requiredData = [] } = schemaObj;
+  const { definitions = {}, properties = {}, required = [] } = schemaObj;
   const fields = table.fields.data; //fauna nesting
 
   const props = {};
-  const required = [];
+  const requiredFields = [];
   fields.forEach(fieldObj => {
     const field = fieldObj.data;
     const schema = field.schemaOverride ? field.schemaOverride : field.schema;
     props[field.name] = schema;
-    required.push(field.name);
+    requiredFields.push(field.name);
   });
-  requiredData.push(table.name);
+  required.push(table.name);
   definitions[table.name] = props;
 
   properties[table.name] = {
     type: "array",
-    minItems: 12,
-    maxItems: 20,
+    minItems: 50,
+    maxItems: 100,
     items: {
-      required,
+      required: requiredFields,
       type: "object",
       properties: { $ref: `#/definitions/${table.name}` }
     }
   };
-  return { definitions, properties, requiredData };
+  return { definitions, properties, required };
+}
+
+function _generateFullSetSChema(file) {
+  const schemaObj = { definitions: {}, properties: {}, required: [] };
+  let tables = file.tables.data;
+
+  tables = sortBy(tables, t => {
+    return t.data.name;
+  });
+
+  tables.forEach(t => {
+    _generateTableSchema(t.data, schemaObj);
+  });
+
+  return schemaObj;
+}
+
+function saveJSONFile(data, name) {
+  const fileJSON = JSON.stringify(data, null, "  ");
+  const blob = new Blob([fileJSON], { type: "application/json" });
+  FileSaver.saveAs(blob, `${name}.json`);
 }

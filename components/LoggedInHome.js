@@ -6,6 +6,7 @@ import Link from "next/link";
 import SmallBorderedTable from "./Styled/SmallBorderedTable";
 import CenteredTD from "./Styled/CenteredTD";
 import DeleteDataSetButton from "./DeleteDataSetButton";
+import { downloadDataSetJSON } from "../utils/schemaGenerators";
 
 export default function LoggedInHome() {
   const { data, error, revalidate } = useDataSets();
@@ -74,8 +75,14 @@ export default function LoggedInHome() {
                     <CenteredTD>{fileName}</CenteredTD>
                     <CenteredTD>{tables.data.length}</CenteredTD>
                     <td>
-                      <Button color="link" size="sm">
-                        Schema
+                      <Button
+                        onClick={() => {
+                          downloadDataSetJSON(data);
+                        }}
+                        color="link"
+                        size="sm"
+                      >
+                        JSON Data
                       </Button>
                       <Button color="link" size="sm">
                         Data
