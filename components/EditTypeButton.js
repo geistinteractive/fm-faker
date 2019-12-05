@@ -103,6 +103,10 @@ export default function EditTypeField({
 }
 
 function schemaLabel(schema) {
+  if (schema.jsonPath) {
+    return "JSON Path";
+  }
+
   let fakerOrChance = "faker";
   let desc = schema[fakerOrChance];
 

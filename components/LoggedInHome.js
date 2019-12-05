@@ -108,7 +108,7 @@ export default function LoggedInHome() {
                       </Button>
                       <Link href={`/dataset/[id]`} as={`/dataset/${data.id}`}>
                         <Button color="link" size="sm">
-                          Edit
+                          View
                         </Button>
                       </Link>
                       <DeleteDataSetButton
