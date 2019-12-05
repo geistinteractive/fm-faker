@@ -21,7 +21,7 @@ export function FieldList({ fields, onChange, dataSetId }) {
           <th>Id</th>
           <th>FieldName</th>
           <th>FM Type</th>
-          <th>Schema Type</th>
+          <th>Generator Type</th>
           <th>Sample Data</th>
         </tr>
       </thead>
