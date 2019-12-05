@@ -20,7 +20,6 @@ export default function fmTime(value, schema) {
       maxTimeInSeconds = differenceInSeconds(maxTime, DayBegin);
     }
   }
-  console.log(minTimeInSeconds, maxTimeInSeconds);
 
   const randomSeconds = randomIntFromInterval(
     minTimeInSeconds,
