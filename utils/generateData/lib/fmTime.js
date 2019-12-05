@@ -17,9 +17,10 @@ export default function fmTime(value, schema) {
     }
     if (value.range.to) {
       let maxTime = parse(value.range.to, theFormat, new Date());
-      const maxTimeInSeconds = differenceInSeconds(maxTime, DayBegin);
+      maxTimeInSeconds = differenceInSeconds(maxTime, DayBegin);
     }
   }
+  console.log(minTimeInSeconds, maxTimeInSeconds);
 
   const randomSeconds = randomIntFromInterval(
     minTimeInSeconds,
