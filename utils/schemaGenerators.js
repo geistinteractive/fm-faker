@@ -65,7 +65,15 @@ function _generateTableSchema(table, schemaObj = {}) {
   const requiredFields = [];
   fields.forEach(fieldObj => {
     const field = fieldObj.data;
-    const schema = field.schemaOverride ? field.schemaOverride : field.schema;
+    let schema = field.schemaOverride ? field.schemaOverride : field.schema;
+    if (schema["fm-related"]) {
+      const obj = schema["fm-related"]
+      schema = {
+        jsonPath: {
+          path: `$..${obj.table}.[*].${obj.field}`
+        }
+      };
+    }
     props[field.name] = schema;
     requiredFields.push(field.name);
   });

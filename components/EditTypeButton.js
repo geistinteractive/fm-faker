@@ -163,4 +163,10 @@ function schemaLabel(schema) {
     }
     return " - FM Time" + note;
   }
+
+  if (schema["fm-related"] !== undefined) {
+    const settings = schema["fm-related"];
+    const { field, table } = settings;
+    return `${table}::${field}`;
+  }
 }
