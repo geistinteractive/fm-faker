@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Col, Row } from "reactstrap";
 import NumberOfRecords from "./NumberOfRecords";
 import { FieldList } from "./FieldList";
-import { downloadTableSchema, downloadCSV } from "../../utils/schemaGenerators";
 
 export default function FMTable({
   onFieldUpdate,
@@ -35,10 +34,7 @@ export default function FMTable({
           <h4>Fields in {data.data.name} Table</h4>
         </Col>
 
-        <Col>
-          <DLButton text="Download Schema" onClick={downloadSchema}></DLButton>
-          <DLButton text="Download CSV" onClick={handlDownloadCSV}></DLButton>
-        </Col>
+        <Col></Col>
       </Row>
 
       <FieldList

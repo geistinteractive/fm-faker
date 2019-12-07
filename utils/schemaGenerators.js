@@ -37,25 +37,7 @@ export async function downloadFullSetCSVs(dataSet) {
   });
 }
 
-export async function downloadCSV(table) {
-  const name = table.name + ".data";
-  const schema = generateTableSchema(table);
 
-  const data = await generateData(schema);
-
-  const csvData = await convertToCSV(data[table.name]);
-
-  const blob = new Blob([csvData], { type: "text/csv" });
-  FileSaver.saveAs(blob, `${name}.csv`);
-  return null;
-}
-
-export function downloadTableSchema(table) {
-  const name = table.name + ".schema";
-  const file = generateTableSchema(table);
-  saveJSONFile(file, name);
-  return null;
-}
 
 function _generateTableSchema(table, schemaObj = {}) {
   const { definitions = {}, properties = {}, required = [] } = schemaObj;
