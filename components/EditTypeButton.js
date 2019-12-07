@@ -12,7 +12,8 @@ import FieldTypeEditor from "./TypeEditor";
 export default function EditTypeField({
   schema,
   schemaOverride,
-  onValidChange
+  onValidChange,
+  fieldName
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [newValue, setNewValue] = useState();
@@ -71,9 +72,9 @@ export default function EditTypeField({
   return (
     <>
       <Modal isOpen={isOpen}>
-        <ModalHeader>Edit Field Faker</ModalHeader>
+        <ModalHeader>Edit Schema for "{fieldName}"</ModalHeader>
         <ModalBody>
-          <p>You can use chance or faker type generators</p>
+          <p>You can use Chance, Faker, or Custom "fm" type generators</p>
           <FieldTypeEditor
             initialValue={schema}
             onValidChange={handleValidChange}

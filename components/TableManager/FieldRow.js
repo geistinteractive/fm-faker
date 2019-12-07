@@ -46,6 +46,7 @@ export default function FieldRow({ data, dataSetId }) {
         <EditTypeButton
           onValidChange={handleValidChange}
           schema={theSchema}
+          fieldName={name}
         ></EditTypeButton>
       </td>
       <CenteredTD>{generated}</CenteredTD>
