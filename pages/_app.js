@@ -4,6 +4,9 @@ import { VSpace } from "../components/Utilities";
 import { Container } from "reactstrap";
 
 import App from "next/app";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
+config.autoAddCss = false;
 
 class MyApp extends App {
   // Only uncomment this method if you have blocking data requirements for

@@ -14,12 +14,11 @@ export default function LoginNav() {
 
   return (
     <>
-      <Nav className="ml-auto" navbar>
+      <Nav>
         <NavItem>
           <NavLink>{data.nickname}</NavLink>
         </NavItem>
-      </Nav>
-      <Nav>
+
         <NavItem>
           {data.error === "not_authenticated" ? (
             <NavLink href="/api/login">Login</NavLink>
