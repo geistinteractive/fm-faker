@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
 const TableList = ({ onClick, fmTables, selectedTableId }) => {
+  if (selectedTableId === undefined) {
+    selectedTableId = fmTables[0].data.id;
+  }
+
   return (
     <ListGroup size="sm">
       {fmTables.map(table => {

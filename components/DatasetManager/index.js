@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Row } from "reactstrap";
 import TableList from "./TableList";
 import TableManager from "../TableManager";
 import { useDataset } from "../../client-api/dataset";
 import { VSpace } from "../Utilities";
+import { saveTableRecords } from "../../client-api/table";
+import idFromRef from "../../api-services/db/fauna-utils/idFromRef";
 
 export default function DatasetManager({ dataSetId }) {
-  const { data, error } = useDataset(dataSetId);
+  const { data, error, revalidate } = useDataset(dataSetId);
 
   const fmTables = data ? data.data.tables.data : [];
 
@@ -16,6 +18,12 @@ export default function DatasetManager({ dataSetId }) {
   const selectedTable = selectedTableId
     ? fmTables.find(i => i.data.id === selectedTableId)
     : fmTables[0];
+
+  async function handleSaveTableRecords(recordData) {
+    const id = idFromRef(selectedTable.ref);
+    await saveTableRecords(id, recordData);
+    revalidate();
+  }
 
   return (
     <>
@@ -38,7 +46,11 @@ export default function DatasetManager({ dataSetId }) {
           />
         </Col>
         <Col>
-          <TableManager data={selectedTable} dataSetId={dataSetId} />
+          <TableManager
+            onSaveTableRecords={handleSaveTableRecords}
+            data={selectedTable}
+            dataSetId={dataSetId}
+          />
         </Col>
       </Row>
     </>
