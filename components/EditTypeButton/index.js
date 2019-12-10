@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalBody
 } from "reactstrap";
-import FieldTypeEditor from "./TypeEditor";
+import FieldTypeEditor from "../TypeEditor";
 
 export default function EditTypeField({
   schema,
