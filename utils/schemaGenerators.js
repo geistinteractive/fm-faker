@@ -37,19 +37,18 @@ export async function downloadFullSetCSVs(dataSet) {
   });
 }
 
-
-
 function _generateTableSchema(table, schemaObj = {}) {
   const { definitions = {}, properties = {}, required = [] } = schemaObj;
   const fields = table.fields.data; //fauna nesting
 
+  if (fields.length === 0) return; // no fields so exit
   const props = {};
   const requiredFields = [];
   fields.forEach(fieldObj => {
     const field = fieldObj.data;
     let schema = field.schemaOverride ? field.schemaOverride : field.schema;
     if (schema["fm-related"]) {
-      const obj = schema["fm-related"]
+      const obj = schema["fm-related"];
       schema = {
         jsonPath: {
           path: `$..${obj.table}.[*].${obj.field}`
@@ -64,8 +63,8 @@ function _generateTableSchema(table, schemaObj = {}) {
 
   properties[table.name] = {
     type: "array",
-    minItems: 50,
-    maxItems: 100,
+    minItems: Number(table.minimum || 20),
+    maxItems: Number(table.maximum || 40),
     items: {
       required: requiredFields,
       type: "object",

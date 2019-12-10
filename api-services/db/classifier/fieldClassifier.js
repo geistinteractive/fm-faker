@@ -14,6 +14,8 @@ export default async function fieldClassifier(Field) {
       relativeDays: { from: -400, to: -1 }
     };
   }
+
+  primaryKeyMatcher(Field);
 }
 
 function getType(datatype) {
@@ -65,7 +67,9 @@ const NameMatches = {
   city: { faker: "address.city" },
   state: { faker: "address.stateAbbr" },
   street: { faker: "address.streetAddress" },
+  address: { faker: "address.streetAddress" },
   zip: { faker: "address.zipCode" },
+  postalCode: { faker: "address.zipCode" },
   user: { faker: "internet.userName" },
   phone: { chance: "phone" },
   url: { chance: "internet.url" },
@@ -78,3 +82,13 @@ const NameMatches = {
   notes: { faker: "lorem.sentences" },
   photo: { faker: "image.image" }
 };
+
+function primaryKeyMatcher(Field) {
+  const name = Field.name.toLowerCase();
+  if (name !== "id") return;
+  const type = Field.datatype.toLowerCase();
+  if (type === "text") {
+    const obj = { chance: "guid" };
+    Field.schema = { ...Field.schema, ...obj };
+  }
+}
