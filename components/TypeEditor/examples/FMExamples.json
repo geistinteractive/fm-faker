@@ -42,9 +42,9 @@
     }
   },
   "fm-Time-Stamp-Relative-past": {
-    "label": "FM Time - past 100 days",
+    "label": "FM Time Stamp - past 100 days",
     "schema": {
-      "fm-timstamp": {
+      "fm-timestamp": {
         "relativeDays": {
           "from": -100,
           "to": -1
@@ -53,7 +53,7 @@
     }
   },
   "fm-Time-Stamp-Relative-future": {
-    "label": "FM Time - future 1000 days",
+    "label": "FM Time Stamp- future 1000 days",
     "schema": {
       "fm-timestamp": {
         "relativeDays": {
@@ -68,8 +68,8 @@
     "schema": {
       "fm-timestamp": {
         "range": {
-          "from": "12:01:2010 10:00:00",
-          "to": "12:01:2021 14:00:00"
+          "from": "12/01/2010 10:00:00",
+          "to": "12/01/2021 14:00:00"
         }
       }
     }
