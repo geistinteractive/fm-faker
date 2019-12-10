@@ -1,9 +1,31 @@
 {
-  "Faker-GUID": {
+  "Faker-postalcode": {
     "label": "Faker - postal code",
     "schema": {
       "type": "string",
       "faker": "address.zipCode"
+    }
+  },
+  "Faker-address-state-abbr": {
+    "label": "Faker - State Abbr",
+    "schema": {
+      "type": "string",
+      "faker": "address.stateAbbr"
+    }
+  },
+
+  "Faker-address-state": {
+    "label": "Faker - State",
+    "schema": {
+      "type": "string",
+      "faker": "address.state"
+    }
+  },
+  "Faker-address-city": {
+    "label": "Faker - streetAddress",
+    "schema": {
+      "type": "string",
+      "faker": "address.streetAddress"
     }
   }
 }

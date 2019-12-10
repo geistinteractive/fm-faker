@@ -5,5 +5,19 @@
       "type": "string",
       "chance": "guid"
     }
+  },
+  "Chance-Gender": {
+    "label": "Chance - Gender",
+    "schema": {
+      "type": "string",
+      "chance": "gender"
+    }
+  },
+  "Chance-email": {
+    "label": "Chance - Email",
+    "schema": {
+      "type": "string",
+      "chance": "email"
+    }
   }
 }
