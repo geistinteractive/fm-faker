@@ -5,6 +5,8 @@ import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-github";
 
 import generateData from "../../utils/generateData/index.js";
+import SelectExample from "./SelectExample.js";
+import { VSpace } from "../Utilities.js";
 
 export default function TypeEditor({
   initialValue,
@@ -69,6 +71,14 @@ function JSONEditor({ onValidJSON, onInvalidJSON, initialValue }) {
 
   return (
     <>
+      Examples
+      <SelectExample
+        onSelect={selected => {
+          handleChange(JSON.stringify(selected, null, "\t"));
+        }}
+      />
+      <VSpace h={"12px"} />
+      Schema
       <AceEditor
         style={{
           borderStyle: "solid",

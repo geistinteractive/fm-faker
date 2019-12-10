@@ -75,6 +75,7 @@ export default function EditTypeField({
         <ModalHeader>Edit Schema for "{fieldName}"</ModalHeader>
         <ModalBody>
           <Info />
+
           <FieldTypeEditor
             initialValue={schema}
             onValidChange={handleValidChange}

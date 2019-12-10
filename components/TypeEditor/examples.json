@@ -1,0 +1,14 @@
+{
+  "fm-related": {
+    "fm-related": {
+      "table": "myTableName",
+      "field": "myFieldName"
+    }
+  },
+  "fm-date": {
+    "fm-date": {
+      "table": "myTableName",
+      "field": "myFieldName"
+    }
+  }
+}
