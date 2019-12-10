@@ -1,0 +1,77 @@
+{
+  "fm-related": {
+    "label": "FM related values",
+    "schema": {
+      "fm-related": {
+        "table": "myTableName",
+        "field": "myFieldName"
+      }
+    }
+  },
+  "fm-Date-Relative": {
+    "label": "FM Dates - relative to today",
+    "schema": {
+      "fm-date": {
+        "relativeDays": {
+          "from": -20,
+          "to": 20
+        }
+      }
+    }
+  },
+  "fm-Date-Range": {
+    "label": "FM Dates - date range",
+    "schema": {
+      "fm-date": {
+        "range": {
+          "from": "05/13/1967",
+          "to": "05/13/1997"
+        }
+      }
+    }
+  },
+  "fm-Time-Range": {
+    "label": "FM Time - range",
+    "schema": {
+      "fm-time": {
+        "range": {
+          "from": "10:00:00",
+          "to": "14:00:00"
+        }
+      }
+    }
+  },
+  "fm-Time-Stamp-Relative-past": {
+    "label": "FM Time - past 100 days",
+    "schema": {
+      "fm-timstamp": {
+        "relativeDays": {
+          "from": -100,
+          "to": -1
+        }
+      }
+    }
+  },
+  "fm-Time-Stamp-Relative-future": {
+    "label": "FM Time - future 1000 days",
+    "schema": {
+      "fm-timestamp": {
+        "relativeDays": {
+          "from": 1,
+          "to": 1000
+        }
+      }
+    }
+  },
+  "fm-Time-Stamp-Range": {
+    "label": "FM Time Stamp - Range",
+    "schema": {
+      "fm-timestamp": {
+        "range": {
+          "from": "12:01:2010 10:00:00",
+          "to": "12:01:2021 14:00:00"
+        }
+      }
+    }
+  }
+}

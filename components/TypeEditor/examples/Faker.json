@@ -1,0 +1,9 @@
+{
+  "Faker-GUID": {
+    "label": "Faker - postal code",
+    "schema": {
+      "type": "string",
+      "faker": "address.zipCode"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Chance-GUID": {
+    "label": "GUID with chance",
+    "schema": {
+      "type": "string",
+      "chance": "guid"
+    }
+  }
+}
