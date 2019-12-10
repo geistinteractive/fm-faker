@@ -74,7 +74,7 @@ export default function EditTypeField({
       <Modal isOpen={isOpen}>
         <ModalHeader>Edit Schema for "{fieldName}"</ModalHeader>
         <ModalBody>
-          <p>You can use Chance, Faker, or Custom "fm" type generators</p>
+          <Info />
           <FieldTypeEditor
             initialValue={schema}
             onValidChange={handleValidChange}
@@ -100,6 +100,26 @@ export default function EditTypeField({
         {schemaLabel(schema)}
       </Button>
     </>
+  );
+}
+
+function Info() {
+  return (
+    <p className="text-muted small">
+      This uses{" "}
+      <a href="https://json-schema-faker.js.org/" target="_blank">
+        JSON Schema Faker
+      </a>{" "}
+      to generate random data. In addition to the{" "}
+      <a href="http://marak.github.io/faker.js/" target="_blank">
+        Faker
+      </a>{" "}
+      and{" "}
+      <a href="https://chancejs.com/" target="_blank">
+        Chance
+      </a>{" "}
+      generators it has custom generators built specifically for FileMaker.
+    </p>
   );
 }
 
