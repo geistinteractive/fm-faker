@@ -1,0 +1,16 @@
+{
+  "basic-enum": {
+    "label": "basic enum",
+    "schema": {
+      "type": "string",
+      "enum": ["apple", "bananas", "rabbit"]
+    }
+  },
+  "basic-fm-boolean": {
+    "label": "Basic FM Boolean",
+    "schema": {
+      "type": "integer",
+      "enum": [0, 1]
+    }
+  }
+}

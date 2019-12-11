@@ -19,5 +19,35 @@
       "type": "string",
       "chance": "email"
     }
+  },
+  "Chance-phone": {
+    "label": "Chance - Phone",
+    "schema": {
+      "type": "string",
+      "chance": "phone"
+    }
+  },
+  "Chance-sentence-words": {
+    "label": "Chance - Sentance word options",
+    "schema": {
+      "type": "string",
+      "chance": { "sentence": { "words": 5 } }
+    }
+  },
+  "Chance-sentence": {
+    "label": "Chance - Sentence ",
+    "schema": {
+      "type": "string",
+      "chance": "sentence"
+    }
+  },
+  "Chance-name-complex": {
+    "label": "Chance - name complex",
+    "schema": {
+      "type": "string",
+      "chance": {
+        "name": { "middle": true, "nationality": "en", "gender": "female" }
+      }
+    }
   }
 }

@@ -117,6 +117,18 @@ function DisplayGeneratedData({ data }) {
       >
         Example: {displayValue}
       </p>
+      <DisplayImage value={data} />
     </>
   );
+}
+
+function DisplayImage({ value }) {
+  if (!value) return null;
+  if (typeof value === "string") {
+    if (value.includes("http")) {
+      return <img width="240px" src={value}></img>;
+    }
+  }
+
+  return null;
 }

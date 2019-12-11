@@ -1,5 +1,6 @@
 import FMexamples from "./FMExamples.json";
 import ChanceExamples from "./Chance.json";
 import Faker from "./Faker.json";
+import Basic from "./Basic.json";
 
-export default { ...FMexamples, ...ChanceExamples, ...Faker };
+export default { ...FMexamples, ...ChanceExamples, ...Faker, ...Basic };

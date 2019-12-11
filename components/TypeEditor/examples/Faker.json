@@ -27,5 +27,55 @@
       "type": "string",
       "faker": "address.streetAddress"
     }
+  },
+  "faker-commerce-product": {
+    "label": "Faker - Product Names",
+    "schema": {
+      "type": "string",
+      "faker": "commerce.productName"
+    }
+  },
+  "faker-commerce-commerce": {
+    "label": "Faker - Price",
+    "schema": {
+      "type": "string",
+      "faker": "commerce.price"
+    }
+  },
+  "faker-company-company": {
+    "label": "Faker - Company Name",
+    "schema": {
+      "type": "string",
+      "faker": "company.companyName"
+    }
+  },
+  "faker-company-catch-phrase": {
+    "label": "Faker - Catch Phrase",
+    "schema": {
+      "type": "string",
+      "faker": "company.catchPhrase"
+    }
+  },
+  "faker-image": {
+    "label": "Faker - Image",
+    "schema": {
+      "type": "string",
+      "faker": "image.image"
+    }
+  },
+
+  "faker-image-avatar": {
+    "label": "Faker - Avatar",
+    "schema": {
+      "type": "string",
+      "faker": "image.avatar"
+    }
+  },
+  "faker-image-animals": {
+    "label": "Faker - Image Animals",
+    "schema": {
+      "type": "string",
+      "faker": "image.animals"
+    }
   }
 }
