@@ -14,16 +14,12 @@ export default function MyNavBar() {
         }}
       >
         <NavbarBrand href="/">
-          <FontAwesomeIcon icon={faHome} href="/" /> Fake Data
+          <FontAwesomeIcon icon={faHome} href="/" /> FakerMaker
         </NavbarBrand>
-        <Nav>
+        <Nav navbar>
           <NavItem>
-            <NavLink href="/datasets">Data Sets</NavLink>
+            <NavLink href="/help">Help</NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink href="/help/">Help</NavLink>
-          </NavItem>
-          <NavItem>{"     "}</NavItem>
         </Nav>
 
         <LoginNav />
