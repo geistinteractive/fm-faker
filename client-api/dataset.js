@@ -2,11 +2,21 @@ import useSWR, { trigger } from "swr";
 import fetch from "isomorphic-unfetch";
 import sortBy from "lodash.sortby";
 
+function checkLogin(resp) {
+  if (resp.status === 401) {
+    window.location = "/api/login";
+    throw new Error("Unauthorized");
+  }
+  return resp;
+}
+
 export function useDataSets() {
   const fetcher = url => {
-    return fetch(url).then(r => {
-      return r.json();
-    });
+    return fetch(url)
+      .then(checkLogin)
+      .then(r => {
+        return r.json();
+      });
   };
   return useSWR("/api/dataset", fetcher, {
     dedupingInterval: 5000,
@@ -17,6 +27,7 @@ export function useDataSets() {
 export function useDataset(id) {
   const fetcher = url => {
     return fetch(url)
+      .then(checkLogin)
       .then(r => {
         return r.json();
       })
@@ -36,7 +47,7 @@ export async function saveNewDataSet(file) {
   const url = "/api/dataset";
 
   try {
-    await fetch(url, {
+    const r = await fetch(url, {
       method: "post",
       body: JSON.stringify(file),
       headers: {
@@ -44,6 +55,7 @@ export async function saveNewDataSet(file) {
       }
     });
     trigger(url); // revalidate datasets
+    checkLogin(r);
     return true;
   } catch (e) {
     console.log(e);
