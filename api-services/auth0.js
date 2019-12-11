@@ -7,13 +7,18 @@ const {
   AUTH0_COOKIE_SECRET
 } = process.env;
 
+const HOST =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://fakermaker.geist.ws";
+
 const auth0 = initAuth0({
   domain: AUTH0_DOMAIN,
   clientId: AUTH0_CLIENT_ID,
   clientSecret: AUTH0_CLIENT_SECRET,
   scope: "openid profile",
-  redirectUri: "http://localhost:3000/api/callback",
-  postLogoutRedirectUri: "http://localhost:3000/",
+  redirectUri: `${HOST}/api/callback`,
+  postLogoutRedirectUri: `${HOST}/`,
   session: {
     // The secret used to encrypt the cookie.
     cookieSecret: AUTH0_COOKIE_SECRET,
@@ -37,7 +42,6 @@ const auth0 = initAuth0({
 export default auth0;
 
 export const checkUser = fn => {
- 
   return async (req, res) => {
     try {
       const { user } = await auth0.getSession(req);
