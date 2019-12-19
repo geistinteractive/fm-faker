@@ -3,7 +3,6 @@ import {
   format,
   differenceInSeconds,
   addSeconds,
-  addDays
 } from "date-fns";
 import { randomIntFromInterval } from "./utils";
 
@@ -43,8 +42,9 @@ export default function fmTime(value, schema) {
     if (value.relativeDays.to !== undefined) maxDays = value.relativeDays.to;
 
     const rDays = randomIntFromInterval(minDays, maxDays);
+    const secondsToAdd = rDays * 84600;
 
-    const timestamp = addDays(new Date(), rDays);
+    const timestamp = addSeconds(new Date(), secondsToAdd);
     return format(timestamp, theFormat);
   }
 }

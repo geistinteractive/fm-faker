@@ -48,7 +48,8 @@
     "react-hook-form": "^3.28.13",
     "react-use": "^12.13.0",
     "reactstrap": "^8.2.0",
-    "swr": "^0.1.13"
+    "swr": "^0.1.13",
+    "youtube-embed-video": "^1.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
