@@ -47,6 +47,7 @@ function _generateTableSchema(table, schemaObj = {}) {
   fields.forEach(fieldObj => {
     const field = fieldObj.data;
     let schema = field.schemaOverride ? field.schemaOverride : field.schema;
+    if (schema["ignore"]) return;
     if (schema["fm-related"]) {
       const obj = schema["fm-related"];
       schema = {

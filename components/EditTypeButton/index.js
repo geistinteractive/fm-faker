@@ -154,6 +154,9 @@ function schemaLabel(schema) {
       " - " + fakerOrChance + (desc ? "." + desc : "") + (enumValue ? desc : "")
     );
   }
+  if (schema["ignore"]) {
+    return "ignored";
+  }
 
   if (schema["fm-timestamp"]) {
     const settings = schema["fm-timestamp"];

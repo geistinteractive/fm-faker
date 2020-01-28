@@ -12,5 +12,11 @@
       "type": "integer",
       "enum": [0, 1]
     }
+  },
+  "ignore": {
+    "label": "Ignore this field",
+    "schema": {
+      "ignore": "true"
+    }
   }
 }

@@ -3,4 +3,4 @@ import ChanceExamples from "./Chance.json";
 import Faker from "./Faker.json";
 import Basic from "./Basic.json";
 
-export default { ...FMexamples, ...ChanceExamples, ...Faker, ...Basic };
+export default { ...Basic, ...FMexamples, ...ChanceExamples, ...Faker };
