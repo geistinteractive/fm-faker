@@ -1,13 +1,16 @@
 import React, { useState } from "react";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Button } from "reactstrap";
 import TableList from "./TableList";
 import TableManager from "../TableManager";
 import { useDataset } from "../../client-api/dataset";
 import { VSpace } from "../Utilities";
 import { saveTableRecords } from "../../client-api/table";
+import { mergeDataSet } from "../../client-api/dataset";
 import idFromRef from "../../api-services/db/fauna-utils/idFromRef";
+import UpdateDataSet from "../UpdateDataSet";
 
 export default function DatasetManager({ dataSetId }) {
+  const [showUpdate, setShowUpdate] = useState(false);
   const { data, error, revalidate } = useDataset(dataSetId);
 
   const fmTables = data ? data.data.tables.data : [];
@@ -25,6 +28,13 @@ export default function DatasetManager({ dataSetId }) {
     revalidate();
   }
 
+  async function handleUpdate(data) {
+    const result = await mergeDataSet(dataSetId, data);
+    console.log(result);
+
+    setShowUpdate(false);
+  }
+
   return (
     <>
       <Row>
@@ -32,6 +42,19 @@ export default function DatasetManager({ dataSetId }) {
           <h1>{data.data.name}</h1>
           <hr />
           <h3>Source File: {data.data.fileName}</h3>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Button onClick={() => setShowUpdate(true)}>
+            Update with new XML File
+          </Button>
+          <UpdateDataSet
+            onCancel={() => setShowUpdate(false)}
+            isOpen={showUpdate}
+            oldData={data}
+            onValidSave={handleUpdate}
+          />
         </Col>
       </Row>
       <VSpace h="40px" />

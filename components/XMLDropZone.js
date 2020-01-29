@@ -32,7 +32,6 @@ const rejectStyle = {
 };
 
 export default function XMLDropZone({ onReceiveParsedFile }) {
-  const { setFMTables } = { setFMTables: () => {} };
   const onDrop = useCallback(async acceptedFiles => {
     const ParsedFile = await parseTables(acceptedFiles);
     onReceiveParsedFile(ParsedFile);
@@ -62,7 +61,7 @@ export default function XMLDropZone({ onReceiveParsedFile }) {
     <div className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p>Drag your FileMaker XML file here.</p>
+        <p>Drag your FileMaker 19 XML file here.</p>
       </div>
     </div>
   );

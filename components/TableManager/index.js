@@ -52,6 +52,7 @@ function EditRecordNumbers({
   const [recordRangeOpen, setRecordRangeOpen] = useState(false);
   return (
     <span className="float-right">
+    
       {`Generate between ${min} and ${max} records for this table.`}{" "}
       <InlineLink
         onClick={e => {
