@@ -43,18 +43,18 @@ export function useDataset(id) {
   return useSWR(`/api/dataset/${id}`, fetcher);
 }
 
-export async function mergeDataSet(id, changes) {
+export async function mergeDataSet(id, data) {
   const url = `/api/dataset/merge/${id}`;
 
   try {
     const r = await fetch(url, {
       method: "post",
-      body: JSON.stringify(changes),
+      body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"
       }
     });
-    trigger("/api/dataset"); // revalidate datasets
+    trigger(`/api/dataset/${id}`); // revalidate datasets
     checkLogin(r);
     return true;
   } catch (e) {

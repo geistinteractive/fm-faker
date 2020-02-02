@@ -5,17 +5,17 @@ import TableManager from "../TableManager";
 import { useDataset } from "../../client-api/dataset";
 import { VSpace } from "../Utilities";
 import { saveTableRecords } from "../../client-api/table";
-import { mergeDataSet } from "../../client-api/dataset";
+import { mergeDataSet, saveNewDataSet } from "../../client-api/dataset";
 import idFromRef from "../../api-services/db/fauna-utils/idFromRef";
 import UpdateDataSet from "../UpdateDataSet";
 
 export default function DatasetManager({ dataSetId }) {
   const [showUpdate, setShowUpdate] = useState(false);
   const { data, error, revalidate } = useDataset(dataSetId);
+  const [selectedTableId, setSelectedTableId] = useState();
 
   const fmTables = data ? data.data.tables.data : [];
 
-  const [selectedTableId, setSelectedTableId] = useState();
   if (!data) return null;
 
   const selectedTable = selectedTableId
@@ -29,10 +29,9 @@ export default function DatasetManager({ dataSetId }) {
   }
 
   async function handleUpdate(data) {
-    const result = await mergeDataSet(dataSetId, data);
-    console.log(result);
-
+    await mergeDataSet(dataSetId, data);
     setShowUpdate(false);
+    setSelectedTableId();
   }
 
   return (
@@ -63,7 +62,10 @@ export default function DatasetManager({ dataSetId }) {
           <h4>Tables</h4>
 
           <TableList
-            onClick={id => setSelectedTableId(id)}
+            onClick={id => {
+              revalidate();
+              setSelectedTableId(id);
+            }}
             fmTables={fmTables}
             selectedTableId={selectedTableId}
           />

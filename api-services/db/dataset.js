@@ -1,7 +1,6 @@
 import client from "./client";
 import { query as q } from "faunadb";
-import { writeFileSync } from "fs";
-import fileClassifer from "./classifier";
+import fileClassifer, { tableClassifier } from "./classifier";
 
 const {
   Call,
@@ -17,7 +16,8 @@ const {
   Var,
   Let,
   Select,
-  Merge
+  Merge,
+  Do
 } = q;
 
 const datasets = Collection("DataSets");
@@ -98,6 +98,15 @@ function _buildResultForFile() {
   );
 }
 
+function updateFileQuery(id, data) {
+  return Let(
+    {
+      tables: data.tables
+    },
+    Map(Var("tables"), Lambda("table", _buildCreateTableQuery(id)))
+  );
+}
+
 function createFileQuery(data) {
   return Let(
     {
@@ -112,13 +121,16 @@ function createFileQuery(data) {
             fileName: Select("fileName", Var("file"))
           }
         })
-      )
+      ),
+      id: Select("id", Var("mainref"))
     },
-    Map(Var("tables"), Lambda("table", _buildCreateTableQuery()))
+    Map(Var("tables"), Lambda("table", _buildCreateTableQuery(Var("id"))))
   );
 }
 
-function _buildCreateTableQuery() {
+function _buildCreateTableQuery(id) {
+  const mainref = Ref(Collection("fm_file"), id);
+
   return Let(
     {
       fields: Select("fields", Var("table")),
@@ -127,7 +139,7 @@ function _buildCreateTableQuery() {
         "ref",
         Create(Collection("fm_table"), {
           data: {
-            fk: Var("mainref"),
+            fk: mainref,
             id: Select("id", Var("table")),
             name: Var("tableName"),
             mods: Select("mods", Var("table"))
@@ -149,6 +161,7 @@ function _buildCreateTableQuery() {
             datatype: Select("datatype", Var("field")),
             comment: Select("comment", Var("field")),
             schema: Select("schema", Var("field")),
+            schemaOverride: Select("schemaOverride", Var("field")),
             autoEnter: Select("autoEnter", Var("field")),
             validation: Select("validation", Var("field"))
           }
@@ -156,4 +169,53 @@ function _buildCreateTableQuery() {
       )
     )
   );
+}
+
+export async function merge(id, data) {
+  const old = await getDataSetById(id);
+  updateParsed(old, data);
+
+  await fileClassifer(data);
+  const DeleteTableFunction = q.Function("fm-file-delete-tables");
+
+  const DeleteTablesQuery = Call(DeleteTableFunction, id);
+  const updateQuery = updateFileQuery(id, data);
+  await client.query(Do(DeleteTablesQuery, updateQuery));
+}
+
+function updateParsed(oldData, newParsedData) {
+  const oldTables = oldData.data.tables.data;
+  const newTables = newParsedData.tables;
+  newParsedData.ref = oldData.ref;
+
+  newTables.map(newTable => {
+    const oldTable = oldTables.find(oldTable => {
+      return oldTable.data.id === newTable.id;
+    });
+
+    if (oldTable) {
+      checkOldTableForSchema(newTable, oldTable);
+    }
+  });
+}
+
+function checkOldTableForSchema(newTable, oldTable) {
+  const oldFieldArray = oldTable.data.fields.data;
+  const newFieldArray = newTable.fields;
+
+  newFieldArray.map(newField => {
+    const oldField = oldFieldArray.find(oldField => {
+      return newField.id === oldField.data.id;
+    });
+
+    if (oldField) {
+      if (oldField.data.datatype === newField.datatype) {
+        newField.schema = oldField.data.schema;
+        if (oldField.data.schemaOverride) {
+          newField.schemaOverride = oldField.data.schemaOverride;
+        }
+      }
+      // add any other fields that need to carry over :-)
+    }
+  });
 }

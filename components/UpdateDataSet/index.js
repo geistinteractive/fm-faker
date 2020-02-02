@@ -18,9 +18,11 @@ export default function UpdateDataSet({
 }) {
   const [showDropZone, setShowDropZone] = useState(true);
   const [changes, setChanges] = useState([]);
+  const [file, setFile] = useState("");
 
   function handleReceiveParsedFile(file) {
     const foundChanges = findChanges(oldData, file);
+    setFile(file);
     setChanges(foundChanges);
     setShowDropZone(false);
   }
@@ -32,7 +34,7 @@ export default function UpdateDataSet({
 
   async function save() {
     reset();
-    onValidSave(changes);
+    onValidSave(file);
   }
 
   function cancel() {

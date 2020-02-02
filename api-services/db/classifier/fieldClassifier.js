@@ -1,6 +1,13 @@
 import generateData from "../../../utils/generateData";
+import { FieldList } from "../../../components/TableManager/FieldList";
 
 export default async function fieldClassifier(Field) {
+  if (!Field.schemaOverride) {
+    Field.schemaOverride = false;
+  }
+
+  if (Field.schema) return; // already done
+
   Field.schema = getType(Field.datatype);
   byName(Field);
   if (Field.validation.unique === "True" || Field.autoEnter.unique) {
