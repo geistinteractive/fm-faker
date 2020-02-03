@@ -73,5 +73,21 @@
         }
       }
     }
+  },
+  "fm-evaluate-get-current-date": {
+    "label": "FM Evaluate Expression",
+    "schema": {
+      "fm-evaluate": {
+        "expression": "Get(CurrentDate)"
+      }
+    }
+  },
+  "fm-evaluate-use-field": {
+    "label": "FM Evaluate Use other fields",
+    "schema": {
+      "fm-evaluate": {
+        "expression": "Event::StartTime + 3600"
+      }
+    }
   }
 }

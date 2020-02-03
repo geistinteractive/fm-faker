@@ -194,4 +194,10 @@ function schemaLabel(schema) {
     const { field, table } = settings;
     return `${table}::${field}`;
   }
+
+  if (schema["fm-evaluate"]) {
+    return "FM Expression";
+  }
+
+  return " - misc";
 }
