@@ -45,7 +45,7 @@ export default function({ open, defaultValues, onSubmit, onCancel }) {
             type="number"
             innerRef={register({
               required: "minimum is required",
-              min: { value: 10, message: "Must be greater than 10" },
+              min: { value: 0, message: "Must be greater than 0" },
               validate: value => {
                 const allValues = getValues();
                 if (Number(allValues["maximum"]) < Number(value)) {
