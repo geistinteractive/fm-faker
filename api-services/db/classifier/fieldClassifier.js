@@ -26,6 +26,7 @@ export default async function fieldClassifier(Field) {
 }
 
 function getType(datatype) {
+  return { ignore: true };
   switch (datatype) {
     case "Text":
       return { type: "string" };
@@ -63,6 +64,10 @@ function byName(Field) {
 
     if (matched) {
       const obj = NameMatches[matcher];
+      try {
+        delete Field.schema.ignore;
+      } catch (e) {}
+
       Field.schema = { ...Field.schema, ...obj };
       return;
     }
@@ -95,7 +100,10 @@ function primaryKeyMatcher(Field) {
   if (name !== "id") return;
   const type = Field.datatype.toLowerCase();
   if (type === "text") {
-    const obj = { chance: "guid" };
+    const obj = { type: "string", chance: "guid" };
+    try {
+      delete Field.schema.ignore;
+    } catch (e) {}
     Field.schema = { ...Field.schema, ...obj };
   }
 }

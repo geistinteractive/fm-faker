@@ -24,6 +24,9 @@ function getType(datatype) {
  */
 function parseTablesFromXml(xmlDoc) {
   let TablesArray = [];
+  const MainNode = xmlDoc.getElementsByTagName("FMDynamicTemplate")[0];
+  console.log(MainNode);
+  
   const TablesNodes = xmlDoc.getElementsByTagName("BaseTable");
   const FieldCatalog = xmlDoc.getElementsByTagName("FieldCatalog");
   for (var i = 0; i < TablesNodes.length; i++) {
